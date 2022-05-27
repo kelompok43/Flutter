@@ -1,3 +1,4 @@
+import 'package:fitness_gym/screens/login/login_page.dart';
 import 'package:fitness_gym/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,13 @@ class WelcomeScreen extends StatelessWidget {
                       child: SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginPage(),
+                                ));
+                          },
                           child: const Text(
                             "LOG IN",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -50,7 +57,11 @@ class WelcomeScreen extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterScreen(),));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterScreen(),
+                              ));
                         },
                         child: const Text(
                           "SIGN UP",

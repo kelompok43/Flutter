@@ -37,11 +37,13 @@ Widget sizedBoxHeightWidth(double height, double width) {
 Widget textFormFieldRegister(TextEditingController textCtrl, String hintText) {
   return TextFormField(
     controller: textCtrl,
+    style: const TextStyle(fontSize: 12),
     decoration: InputDecoration(
       hintText: hintText,
       focusColor: Colors.orange,
+      contentPadding: const EdgeInsets.all(10),
       focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.orange,width: 1),
+        borderSide: BorderSide(color: Colors.orange, width: 1),
       ),
       enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
@@ -54,16 +56,26 @@ Widget textFormFieldRegister(TextEditingController textCtrl, String hintText) {
     ),
   );
 }
-Widget textFormFieldForPassword(TextEditingController textCtrl, String hintText,bool isHidden) {
+
+Widget textFormFieldForPassword(TextEditingController textCtrl, String hintText,
+    bool isHidden, Function() onTap) {
   return TextFormField(
     controller: textCtrl,
     obscureText: isHidden,
+    style: const TextStyle(fontSize: 12),
     decoration: InputDecoration(
-      suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.visibility)),
+      contentPadding: const EdgeInsets.all(10),
+      suffixIcon: IconButton(
+        onPressed: onTap,
+        icon: Icon(
+          isHidden ? Icons.visibility_off : Icons.visibility,
+          color: const Color(0xFF5F5F5F),
+        ),
+      ),
       hintText: hintText,
       focusColor: Colors.orange,
       focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.orange,width: 1),
+        borderSide: BorderSide(color: Colors.orange, width: 1),
       ),
       enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
@@ -74,6 +86,5 @@ Widget textFormFieldForPassword(TextEditingController textCtrl, String hintText,
         borderRadius: BorderRadius.circular(5),
       ),
     ),
-    
   );
 }

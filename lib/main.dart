@@ -1,3 +1,4 @@
+import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/screens/register/register_screen_view_model.dart';
 import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => RegisterViewModel(),)
+        ChangeNotifierProvider(
+          create: (context) => RegisterViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LoginViewModel(),
+        )
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: WelcomeScreen(),
+        home: const WelcomeScreen(),
+        theme: ThemeData(
+            fontFamily: 'Poppins', backgroundColor: const Color(0xFFFEFEFE)),
       ),
     );
   }

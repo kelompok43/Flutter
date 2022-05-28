@@ -1,5 +1,5 @@
 import 'package:fitness_gym/screens/login/login_view_model.dart';
-import 'package:fitness_gym/screens/register/register_screen_view_model.dart';
+import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

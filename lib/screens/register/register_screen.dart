@@ -1,5 +1,8 @@
-import 'package:fitness_gym/screens/register/widgets.dart';
+import 'package:fitness_gym/screens/register/register_view_model.dart';
+import 'package:fitness_gym/utils/constants.dart';
+import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -16,12 +19,12 @@ class RegisterScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         shadowColor: Colors.black12,
-        title: const Text(
-          "Daftar",
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        title: const Text("Daftar",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            )),
       ),
       body: Container(
         height: double.infinity,
@@ -31,61 +34,105 @@ class RegisterScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                sizedBoxHeight(5),
-                labelText("Nama Lengkap"),
-                sizedBoxHeight(5),
-                textFormFieldRegister(namaCtrl, "Masukkan Nama Anda"),
-                sizedBoxHeight(20),
-                labelText("Email atau Nomor Ponsel"),
-                sizedBoxHeight(5),
-                textFormFieldRegister(
-                    emailOrPhoneCtrl, "Masukkan Email atau No Ponsel"),
-                sizedBoxHeight(5),
-                exampleText("Contoh : 08123456789"),
-                sizedBoxHeight(20),
-                labelText("Kata Sandi"),
-                sizedBoxHeight(5),
-                textFormFieldRegister(passwordCtrl, "Masukkan Kata Sandi"),
-                sizedBoxHeight(5),
-                exampleText("Minimal 8 Karakter"),
-                sizedBoxHeight(20),
-                labelText("Masukkan Ulang Kata Sandi"),
-                sizedBoxHeight(5),
-                textFormFieldRegister(
-                    confirmPasswordCtrl, "Masukkan Ulang Kata Sandi"),
-                sizedBoxHeight(5),
-                exampleText("Minimal 8 Karakter"),
-                sizedBoxHeight(20),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Daftar",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.orange.shade800,
-                    ),
-                  ),
-                ),
-                Row(
+            child: Consumer<RegisterViewModel>(
+              builder: (BuildContext context, viewModel, Widget? child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Dengan mendaftar, saya menyetujui",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.bold)),
-                    TextButton(
-                      onPressed: () {},
-                      child: const Text("Syarat dan Ketentuan",
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold)),
+                    sizedBoxHeight(5),
+                    labelText("Nama Lengkap"),
+                    sizedBoxHeight(5),
+                    textFormField(namaCtrl, "Masukkan Nama Anda"),
+                    sizedBoxHeight(20),
+                    labelText("Email atau Nomor Ponsel"),
+                    sizedBoxHeight(5),
+                    textFormField(
+                        emailOrPhoneCtrl, "Masukkan Email atau No Ponsel"),
+                    sizedBoxHeight(5),
+                    exampleText("Contoh : 08123456789"),
+                    sizedBoxHeight(20),
+                    labelText("Kata Sandi"),
+                    sizedBoxHeight(5),
+                    textFormFieldForPassword(passwordCtrl,
+                        "Masukkan Kata Sandi", viewModel.passIsHidden, () {
+                      viewModel.passisHidden = !viewModel.passIsHidden;
+                    }),
+                    sizedBoxHeight(5),
+                    exampleText("Minimal 8 Karakter"),
+                    sizedBoxHeight(20),
+                    labelText("Masukkan Ulang Kata Sandi"),
+                    sizedBoxHeight(5),
+                    textFormFieldForPassword(
+                        confirmPasswordCtrl,
+                        "Masukkan Kata Sandi",
+                        viewModel.confirmPassIsHidden, () {
+                      viewModel.confirmPassIsHidden =
+                          !viewModel.confirmPassIsHidden;
+                    }),
+                    sizedBoxHeight(5),
+                    exampleText("Minimal 8 Karakter"),
+                    sizedBoxHeight(20),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "Daftar",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: colorOrange,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Dengan mendaftar, saya menyetujui",
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "Syarat dan Ketentuan",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text("Serta",
+                                style: TextStyle(
+                                    fontSize: 10, fontWeight: FontWeight.bold)),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "Kebijakan Privasi",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ],
-                ),
-              ],
+                );
+              },
             ),
           ),
         ),

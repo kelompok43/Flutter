@@ -1,5 +1,5 @@
 import 'package:fitness_gym/screens/login/login_view_model.dart';
-import 'package:fitness_gym/screens/register/widgets.dart';
+import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,17 +39,20 @@ class LoginPage extends StatelessWidget {
                   children: [
                     labelText("Email atau Nomor Ponsel"),
                     sizedBoxHeight(5),
-                    textFormFieldRegister(
-                        _usernameController, 'Masukkan email'),
+                    textFormField(_usernameController, 'Masukkan email'),
                     sizedBoxHeight(5),
                     exampleText('Contoh: 08123456789'),
                     sizedBoxHeight(20),
                     labelText("Password"),
                     sizedBoxHeight(5),
-                    textFormFieldForPassword(_passwordController,
-                        'Masukkan kata sandi', viewModel.isHidden, () {
-                      viewModel.isHidden = !viewModel.isHidden;
-                    }),
+                    textFormFieldForPassword(
+                      _passwordController,
+                      'Masukkan kata sandi',
+                      viewModel.isHidden,
+                      () {
+                        viewModel.isHidden = !viewModel.isHidden;
+                      },
+                    ),
                     sizedBoxHeight(5),
                     exampleText('Contoh: 08123456789'),
                     sizedBoxHeight(20),

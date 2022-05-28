@@ -34,7 +34,7 @@ Widget sizedBoxHeightWidth(double height, double width) {
   );
 }
 
-Widget textFormFieldRegister(TextEditingController textCtrl, String hintText) {
+Widget textFormField(TextEditingController textCtrl, String hintText) {
   return TextFormField(
     controller: textCtrl,
     style: const TextStyle(fontSize: 12),

@@ -22,6 +22,7 @@ class WelcomeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
+                const SizedBox(height: 200,),
                 Expanded(
                   child: SizedBox(
                     height: 200,
@@ -33,7 +34,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 240),
+                      padding: const EdgeInsets.only(top: 100),
                       child: SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(

@@ -88,7 +88,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        sizedBoxHeight(5),
+                        sizedBoxHeight(15),
                         RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(

@@ -1,6 +1,7 @@
 import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -87,46 +88,40 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Dengan mendaftar, saya menyetujui",
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                "Syarat dan Ketentuan",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text("Serta",
-                                style: TextStyle(
-                                    fontSize: 10, fontWeight: FontWeight.bold)),
-                            TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                "Kebijakan Privasi",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
+                        sizedBoxHeight(5),
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            text: "Dengan mendaftar, saya menyetujui ",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: colorGrey,
+                                fontWeight: FontWeight.bold),
+                            children: [
+                              TextSpan(
+                                  text: "Syarat dan Ketentuan ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.blue.shade800),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {}),
+                              TextSpan(
+                                  text: "Serta ",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: colorGrey,
+                                      fontWeight: FontWeight.bold)),
+                                      TextSpan(
+                                  text: "Kebijakan Privasi ",
+                                  style:  TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.blue.shade800),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {}),
+                            ],
+                          ),
                         ),
                       ],
                     ),

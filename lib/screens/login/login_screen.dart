@@ -1,6 +1,7 @@
 import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:fitness_gym/utils/constants.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -71,19 +72,41 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Row(
+                    Column(
                       children: [
-                        const Text(
-                          "Dengan mendaftar, saya menyetujui",
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            "Syarat dan Ketentuan",
+                        sizedBoxHeight(15),
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            text: "Dengan mendaftar, saya menyetujui ",
                             style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold),
+                                fontSize: 12,
+                                color: colorGrey,
+                                fontWeight: FontWeight.bold),
+                            children: [
+                              TextSpan(
+                                  text: "Syarat dan Ketentuan ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.blue.shade800),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {}),
+                              TextSpan(
+                                  text: "Serta ",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: colorGrey,
+                                      fontWeight: FontWeight.bold)),
+                              TextSpan(
+                                  text: "Kebijakan Privasi ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                      color: Colors.blue.shade800),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {}),
+                            ],
                           ),
                         ),
                       ],

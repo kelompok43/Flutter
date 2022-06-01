@@ -28,10 +28,7 @@ class RegisterScreen extends StatelessWidget {
             )),
       ),
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(color: Colors.white),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
@@ -40,7 +37,7 @@ class RegisterScreen extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    sizedBoxHeight(5),
+                    sizedBoxHeight(20),
                     labelText("Nama Lengkap"),
                     sizedBoxHeight(5),
                     textFormField(namaCtrl, "Masukkan Nama Anda"),
@@ -86,9 +83,9 @@ class RegisterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sizedBoxHeight(20),
                     Column(
                       children: [
-                        sizedBoxHeight(15),
                         RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
@@ -112,9 +109,9 @@ class RegisterScreen extends StatelessWidget {
                                       fontSize: 12,
                                       color: colorGrey,
                                       fontWeight: FontWeight.bold)),
-                                      TextSpan(
+                              TextSpan(
                                   text: "Kebijakan Privasi ",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12,
                                       color: Colors.blue.shade800),

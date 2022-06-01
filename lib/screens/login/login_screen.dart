@@ -13,7 +13,6 @@ class LoginPage extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final _usernameController = TextEditingController();
     final _passwordController = TextEditingController();
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -29,7 +28,7 @@ class LoginPage extends StatelessWidget {
         ),
       ),
       body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -38,6 +37,7 @@ class LoginPage extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    sizedBoxHeight(20),
                     labelText("Email atau Nomor Ponsel"),
                     sizedBoxHeight(5),
                     textFormField(_usernameController, 'Masukkan email'),
@@ -72,15 +72,15 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sizedBoxHeight(20),
                     Column(
                       children: [
-                        sizedBoxHeight(15),
                         RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             text: "Dengan mendaftar, saya menyetujui ",
                             style: TextStyle(
-                                fontSize: 12,
+                                fontSize: 10,
                                 color: colorGrey,
                                 fontWeight: FontWeight.bold),
                             children: [
@@ -88,21 +88,21 @@ class LoginPage extends StatelessWidget {
                                   text: "Syarat dan Ketentuan ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12,
+                                      fontSize: 10,
                                       color: Colors.blue.shade800),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                               TextSpan(
                                   text: "Serta ",
                                   style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 10,
                                       color: colorGrey,
                                       fontWeight: FontWeight.bold)),
                               TextSpan(
                                   text: "Kebijakan Privasi ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12,
+                                      fontSize: 10,
                                       color: Colors.blue.shade800),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),

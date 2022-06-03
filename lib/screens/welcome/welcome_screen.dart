@@ -1,5 +1,6 @@
 import 'package:fitness_gym/screens/login/login_screen.dart';
 import 'package:fitness_gym/screens/register/register_screen.dart';
+import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -49,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.orange.shade800,
+                            primary: primary5,
                           ),
                         ),
                       ),
@@ -69,7 +70,7 @@ class WelcomeScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.grey.shade900),
+                            primary: neutral9),
                       ),
                     ),
                   ],

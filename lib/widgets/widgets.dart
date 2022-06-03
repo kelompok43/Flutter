@@ -1,18 +1,23 @@
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Widget labelText(String text) {
   return Text(
     text,
-    style: TextStyle(fontWeight: FontWeight.bold, color: neutral5),
+    style: GoogleFonts.poppins(
+      textStyle: TextStyle(fontWeight: FontWeight.bold, color: neutral5,fontSize: 12),
+    ),
   );
 }
 
 Widget exampleText(String text) {
   return Text(
     text,
-    style:
-        TextStyle(fontWeight: FontWeight.bold, color: neutral5, fontSize: 12),
+    style: GoogleFonts.poppins(
+      textStyle:
+          TextStyle(fontWeight: FontWeight.bold, color: neutral5, fontSize: 12),
+    ),
   );
 }
 
@@ -43,9 +48,10 @@ Widget textFormField(
   return TextFormField(
     controller: textCtrl,
     textInputAction: action,
-    style: const TextStyle(fontSize: 12),
+    style: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 12)),
     decoration: InputDecoration(
       hintText: hintText,
+      hintStyle: GoogleFonts.poppins(),
       focusColor: primary3,
       contentPadding: const EdgeInsets.all(10),
       focusedBorder: OutlineInputBorder(
@@ -80,7 +86,7 @@ Widget textFormFieldForPassword(
     controller: textCtrl,
     textInputAction: action,
     obscureText: isHidden,
-    style: const TextStyle(fontSize: 12),
+    style: GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 12)),
     decoration: InputDecoration(
       contentPadding: const EdgeInsets.all(10),
       suffixIcon: IconButton(
@@ -91,6 +97,7 @@ Widget textFormFieldForPassword(
         ),
       ),
       hintText: hintText,
+      hintStyle: GoogleFonts.poppins(),
       focusColor: primary3,
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: primary3, width: 1),

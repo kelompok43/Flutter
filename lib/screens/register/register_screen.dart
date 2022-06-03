@@ -3,6 +3,7 @@ import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -20,12 +21,16 @@ class RegisterScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: neutral8,
         shadowColor: Colors.black12,
-        title: Text("Daftar",
-            style: TextStyle(
+        title: Text(
+          "Daftar",
+          style: GoogleFonts.poppins(
+            textStyle: TextStyle(
               color: neutral9,
               fontSize: 14,
               fontWeight: FontWeight.w600,
-            )),
+            ),
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -40,28 +45,48 @@ class RegisterScreen extends StatelessWidget {
                     sizedBoxHeight(20),
                     labelText("Nama Lengkap"),
                     sizedBoxHeight(5),
-                    textFormField(textCtrl: namaCtrl, hintText: "Masukkan Nama", message: "Nama", action: TextInputAction.next),
+                    textFormField(
+                        textCtrl: namaCtrl,
+                        hintText: "Masukkan Nama",
+                        message: "Nama",
+                        action: TextInputAction.next),
                     sizedBoxHeight(20),
                     labelText("Email atau Nomor Ponsel"),
                     sizedBoxHeight(5),
-                    textFormField(textCtrl: emailOrPhoneCtrl, hintText: "Masukkan Email atau No Ponsel", message: "Email atau No Ponsel", action: TextInputAction.next),
+                    textFormField(
+                        textCtrl: emailOrPhoneCtrl,
+                        hintText: "Masukkan Email atau No Ponsel",
+                        message: "Email atau No Ponsel",
+                        action: TextInputAction.next),
                     // sizedBoxHeight(5),
                     // exampleText("Contoh : 08123456789"),
                     sizedBoxHeight(20),
                     labelText("Kata Sandi"),
                     sizedBoxHeight(5),
-                    textFormFieldForPassword(textCtrl: passwordCtrl, hintText: "Masukkan Kata Sandi", isHidden: viewModel.passIsHidden, onTap: () {
-                      viewModel.passisHidden = !viewModel.passIsHidden;
-                    }, message: "Kata Sandi", action: TextInputAction.next),
+                    textFormFieldForPassword(
+                        textCtrl: passwordCtrl,
+                        hintText: "Masukkan Kata Sandi",
+                        isHidden: viewModel.passIsHidden,
+                        onTap: () {
+                          viewModel.passisHidden = !viewModel.passIsHidden;
+                        },
+                        message: "Kata Sandi",
+                        action: TextInputAction.next),
                     // sizedBoxHeight(5),
                     // exampleText("Minimal 8 Karakter"),
                     sizedBoxHeight(20),
                     labelText("Masukkan Ulang Kata Sandi"),
                     sizedBoxHeight(5),
-                    textFormFieldForPassword(textCtrl: confirmPasswordCtrl, hintText: "Masukkan Kata Sandi", isHidden: viewModel.confirmPassIsHidden, onTap: () {
-                      viewModel.confirmPassIsHidden =
-                          !viewModel.confirmPassIsHidden;
-                    }, message: "Kata Sandi", action: TextInputAction.done),
+                    textFormFieldForPassword(
+                        textCtrl: confirmPasswordCtrl,
+                        hintText: "Masukkan Kata Sandi",
+                        isHidden: viewModel.confirmPassIsHidden,
+                        onTap: () {
+                          viewModel.confirmPassIsHidden =
+                              !viewModel.confirmPassIsHidden;
+                        },
+                        message: "Kata Sandi",
+                        action: TextInputAction.done),
                     // sizedBoxHeight(5),
                     // exampleText("Minimal 8 Karakter"),
                     sizedBoxHeight(20),
@@ -69,12 +94,14 @@ class RegisterScreen extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          if(_formKey.currentState!.validate()){
-                          }
+                          if (_formKey.currentState!.validate()) {}
                         },
-                        child: const Text(
+                        child: Text(
                           "Daftar",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(
+                            textStyle:
+                                const TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                         style: ElevatedButton.styleFrom(
                           primary: primary4,
@@ -88,31 +115,40 @@ class RegisterScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             text: "Dengan mendaftar, saya menyetujui ",
-                            style: TextStyle(
-                                fontSize: 10,
-                                color: neutral4,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  fontSize: 10,
+                                  color: neutral4,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             children: [
                               TextSpan(
                                   text: "Syarat dan Ketentuan ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10,
-                                      color: info7),
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                        color: info7),
+                                  ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                               TextSpan(
-                                  text: "Serta ",
-                                  style: TextStyle(
+                                text: "Serta ",
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
                                       fontSize: 10,
                                       color: neutral4,
-                                      fontWeight: FontWeight.bold)),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
                               TextSpan(
                                   text: "Kebijakan Privasi ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10,
-                                      color: info7),
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                        color: info7),
+                                  ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                             ],

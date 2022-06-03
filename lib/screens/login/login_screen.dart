@@ -3,6 +3,7 @@ import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -72,9 +73,12 @@ class LoginPage extends StatelessWidget {
                             _formKey.currentState!.save();
                           }
                         },
-                        child: const Text(
+                        child: Text(
                           'Login',
-                          style: TextStyle(fontWeight: FontWeight.w600),
+                          style: GoogleFonts.poppins(
+                            textStyle:
+                                const TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(primary4),
@@ -88,31 +92,41 @@ class LoginPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             text: "Dengan mendaftar, saya menyetujui ",
-                            style: TextStyle(
-                                fontSize: 10,
-                                color: neutral4,
-                                fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  fontSize: 10,
+                                  color: neutral4,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             children: [
                               TextSpan(
                                   text: "Syarat dan Ketentuan ",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 10,
-                                      color: info7),
+                                      color: info7,
+                                    ),
+                                  ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                               TextSpan(
-                                  text: "Serta ",
-                                  style: TextStyle(
+                                text: "Serta ",
+                                style: GoogleFonts.poppins(
+                                  textStyle: TextStyle(
                                       fontSize: 10,
                                       color: neutral4,
-                                      fontWeight: FontWeight.bold)),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
                               TextSpan(
                                   text: "Kebijakan Privasi ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 10,
-                                      color: info7),
+                                  style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 10,
+                                        color: info7),
+                                  ),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                             ],

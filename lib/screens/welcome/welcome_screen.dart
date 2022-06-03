@@ -2,6 +2,7 @@ import 'package:fitness_gym/screens/login/login_screen.dart';
 import 'package:fitness_gym/screens/register/register_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -45,9 +46,9 @@ class WelcomeScreen extends StatelessWidget {
                                   builder: (context) => const LoginPage(),
                                 ));
                           },
-                          child: const Text(
+                          child: Text(
                             "LOG IN",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(textStyle: const TextStyle(fontWeight: FontWeight.bold)),
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: primary5,
@@ -65,9 +66,9 @@ class WelcomeScreen extends StatelessWidget {
                                 builder: (context) => const RegisterScreen(),
                               ));
                         },
-                        child: const Text(
+                        child: Text(
                           "SIGN UP",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(textStyle: const TextStyle(fontWeight: FontWeight.bold)),
                         ),
                         style: ElevatedButton.styleFrom(
                             primary: neutral9),

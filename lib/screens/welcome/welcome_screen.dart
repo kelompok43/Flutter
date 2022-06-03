@@ -1,6 +1,7 @@
 import 'package:fitness_gym/screens/login/login_screen.dart';
 import 'package:fitness_gym/screens/register/register_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
+import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -37,6 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 100),
                       child: SizedBox(
+                        height: 45,
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
@@ -56,7 +58,9 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sizedBoxHeight(15),
                     SizedBox(
+                      height: 45,
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {

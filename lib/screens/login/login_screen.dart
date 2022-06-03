@@ -16,12 +16,12 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        foregroundColor: neutral8,
         shadowColor: Colors.black12,
-        title: const Text(
+        title: Text(
           "Login",
           style: TextStyle(
-            color: Colors.black,
+            color: neutral9,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -40,35 +40,44 @@ class LoginPage extends StatelessWidget {
                     sizedBoxHeight(20),
                     labelText("Email atau Nomor Ponsel"),
                     sizedBoxHeight(5),
-                    textFormField(_usernameController, 'Masukkan email'),
-                    sizedBoxHeight(5),
-                    exampleText('Contoh: 08123456789'),
+                    textFormField(
+                        textCtrl: _usernameController,
+                        hintText: "Masukkan email",
+                        message: "Email atau No Ponsel",
+                        action: TextInputAction.next),
+                    // sizedBoxHeight(5),
+                    // exampleText('Contoh: 08123456789'),
                     sizedBoxHeight(20),
                     labelText("Password"),
                     sizedBoxHeight(5),
                     textFormFieldForPassword(
-                      _passwordController,
-                      'Masukkan kata sandi',
-                      viewModel.isHidden,
-                      () {
-                        viewModel.isHidden = !viewModel.isHidden;
-                      },
-                    ),
-                    sizedBoxHeight(5),
-                    exampleText('Contoh: 08123456789'),
+                        textCtrl: _passwordController,
+                        hintText: "Masukkan Kata Sandi",
+                        isHidden: viewModel.isHidden,
+                        onTap: () {
+                          viewModel.isHidden = !viewModel.isHidden;
+                        },
+                        message: "Kata Sandi",
+                        action: TextInputAction.next),
+
+                    // sizedBoxHeight(5),
+                    // exampleText('Contoh: 08123456789'),
                     sizedBoxHeight(20),
                     SizedBox(
                       height: 45,
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                          }
+                        },
                         child: const Text(
                           'Login',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
                         style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(colorOrange),
+                          backgroundColor: MaterialStateProperty.all(primary4),
                         ),
                       ),
                     ),
@@ -81,7 +90,7 @@ class LoginPage extends StatelessWidget {
                             text: "Dengan mendaftar, saya menyetujui ",
                             style: TextStyle(
                                 fontSize: 10,
-                                color: colorGrey,
+                                color: neutral4,
                                 fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
@@ -89,21 +98,21 @@ class LoginPage extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 10,
-                                      color: Colors.blue.shade800),
+                                      color: info7),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                               TextSpan(
                                   text: "Serta ",
                                   style: TextStyle(
                                       fontSize: 10,
-                                      color: colorGrey,
+                                      color: neutral4,
                                       fontWeight: FontWeight.bold)),
                               TextSpan(
                                   text: "Kebijakan Privasi ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 10,
-                                      color: Colors.blue.shade800),
+                                      color: info7),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                             ],

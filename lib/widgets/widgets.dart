@@ -1,17 +1,18 @@
+import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget labelText(String text) {
   return Text(
     text,
-    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey.shade700),
+    style: TextStyle(fontWeight: FontWeight.bold, color: neutral5),
   );
 }
 
 Widget exampleText(String text) {
   return Text(
     text,
-    style: TextStyle(
-        fontWeight: FontWeight.bold, color: Colors.grey.shade700, fontSize: 12),
+    style:
+        TextStyle(fontWeight: FontWeight.bold, color: neutral5, fontSize: 12),
   );
 }
 
@@ -34,33 +35,50 @@ Widget sizedBoxHeightWidth(double height, double width) {
   );
 }
 
-Widget textFormField(TextEditingController textCtrl, String hintText) {
+Widget textFormField(
+    {required TextEditingController textCtrl,
+    required String hintText,
+    required String message,
+    required TextInputAction action}) {
   return TextFormField(
     controller: textCtrl,
+    textInputAction: action,
     style: const TextStyle(fontSize: 12),
     decoration: InputDecoration(
       hintText: hintText,
-      focusColor: Colors.orange,
+      focusColor: primary3,
       contentPadding: const EdgeInsets.all(10),
-      focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.orange, width: 1),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: primary3, width: 1),
       ),
-      enabledBorder: const OutlineInputBorder(
+      enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-        color: Colors.orange,
+        color: primary3,
         width: 0.8,
       )),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
       ),
     ),
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return "$message Tidak Boleh Kosong";
+      }
+      return null;
+    },
   );
 }
 
-Widget textFormFieldForPassword(TextEditingController textCtrl, String hintText,
-    bool isHidden, Function() onTap) {
+Widget textFormFieldForPassword(
+    {required TextEditingController textCtrl,
+    required String hintText,
+    required bool isHidden,
+    required Function() onTap,
+    required String message,
+    required TextInputAction action}) {
   return TextFormField(
     controller: textCtrl,
+    textInputAction: action,
     obscureText: isHidden,
     style: const TextStyle(fontSize: 12),
     decoration: InputDecoration(
@@ -69,22 +87,28 @@ Widget textFormFieldForPassword(TextEditingController textCtrl, String hintText,
         onPressed: onTap,
         icon: Icon(
           isHidden ? Icons.visibility_off : Icons.visibility,
-          color: const Color(0xFF5F5F5F),
+          color: neutral7,
         ),
       ),
       hintText: hintText,
-      focusColor: Colors.orange,
-      focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.orange, width: 1),
+      focusColor: primary3,
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: primary3, width: 1),
       ),
-      enabledBorder: const OutlineInputBorder(
+      enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-        color: Colors.orange,
+        color: primary3,
         width: 0.8,
       )),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
       ),
     ),
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return "$message Tidak Boleh Kosong";
+      }
+      return null;
+    },
   );
 }

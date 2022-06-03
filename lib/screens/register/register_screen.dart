@@ -18,11 +18,11 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        foregroundColor: neutral8,
         shadowColor: Colors.black12,
-        title: const Text("Daftar",
+        title: Text("Daftar",
             style: TextStyle(
-              color: Colors.black,
+              color: neutral9,
               fontSize: 14,
               fontWeight: FontWeight.w600,
             )),
@@ -40,46 +40,44 @@ class RegisterScreen extends StatelessWidget {
                     sizedBoxHeight(20),
                     labelText("Nama Lengkap"),
                     sizedBoxHeight(5),
-                    textFormField(namaCtrl, "Masukkan Nama Anda"),
+                    textFormField(textCtrl: namaCtrl, hintText: "Masukkan Nama", message: "Nama", action: TextInputAction.next),
                     sizedBoxHeight(20),
                     labelText("Email atau Nomor Ponsel"),
                     sizedBoxHeight(5),
-                    textFormField(
-                        emailOrPhoneCtrl, "Masukkan Email atau No Ponsel"),
-                    sizedBoxHeight(5),
-                    exampleText("Contoh : 08123456789"),
+                    textFormField(textCtrl: emailOrPhoneCtrl, hintText: "Masukkan Email atau No Ponsel", message: "Email atau No Ponsel", action: TextInputAction.next),
+                    // sizedBoxHeight(5),
+                    // exampleText("Contoh : 08123456789"),
                     sizedBoxHeight(20),
                     labelText("Kata Sandi"),
                     sizedBoxHeight(5),
-                    textFormFieldForPassword(passwordCtrl,
-                        "Masukkan Kata Sandi", viewModel.passIsHidden, () {
+                    textFormFieldForPassword(textCtrl: passwordCtrl, hintText: "Masukkan Kata Sandi", isHidden: viewModel.passIsHidden, onTap: () {
                       viewModel.passisHidden = !viewModel.passIsHidden;
-                    }),
-                    sizedBoxHeight(5),
-                    exampleText("Minimal 8 Karakter"),
+                    }, message: "Kata Sandi", action: TextInputAction.next),
+                    // sizedBoxHeight(5),
+                    // exampleText("Minimal 8 Karakter"),
                     sizedBoxHeight(20),
                     labelText("Masukkan Ulang Kata Sandi"),
                     sizedBoxHeight(5),
-                    textFormFieldForPassword(
-                        confirmPasswordCtrl,
-                        "Masukkan Kata Sandi",
-                        viewModel.confirmPassIsHidden, () {
+                    textFormFieldForPassword(textCtrl: confirmPasswordCtrl, hintText: "Masukkan Kata Sandi", isHidden: viewModel.confirmPassIsHidden, onTap: () {
                       viewModel.confirmPassIsHidden =
                           !viewModel.confirmPassIsHidden;
-                    }),
-                    sizedBoxHeight(5),
-                    exampleText("Minimal 8 Karakter"),
+                    }, message: "Kata Sandi", action: TextInputAction.done),
+                    // sizedBoxHeight(5),
+                    // exampleText("Minimal 8 Karakter"),
                     sizedBoxHeight(20),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if(_formKey.currentState!.validate()){
+                          }
+                        },
                         child: const Text(
                           "Daftar",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: colorOrange,
+                          primary: primary4,
                         ),
                       ),
                     ),
@@ -91,30 +89,30 @@ class RegisterScreen extends StatelessWidget {
                           text: TextSpan(
                             text: "Dengan mendaftar, saya menyetujui ",
                             style: TextStyle(
-                                fontSize: 12,
-                                color: colorGrey,
+                                fontSize: 10,
+                                color: neutral4,
                                 fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
                                   text: "Syarat dan Ketentuan ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Colors.blue.shade800),
+                                      fontSize: 10,
+                                      color: info7),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                               TextSpan(
                                   text: "Serta ",
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: colorGrey,
+                                      fontSize: 10,
+                                      color: neutral4,
                                       fontWeight: FontWeight.bold)),
                               TextSpan(
                                   text: "Kebijakan Privasi ",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                      color: Colors.blue.shade800),
+                                      fontSize: 10,
+                                      color: info7),
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {}),
                             ],

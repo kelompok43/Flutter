@@ -12,10 +12,10 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    final namaCtrl = TextEditingController();
-    final emailOrPhoneCtrl = TextEditingController();
-    final passwordCtrl = TextEditingController();
-    final confirmPasswordCtrl = TextEditingController();
+    final _namaCtrl = TextEditingController();
+    final _emailOrPhoneCtrl = TextEditingController();
+    final _passwordCtrl = TextEditingController();
+    final _confirmPasswordCtrl = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -46,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                     labelText("Nama Lengkap"),
                     sizedBoxHeight(5),
                     textFormField(
-                        textCtrl: namaCtrl,
+                        textCtrl: _namaCtrl,
                         hintText: "Masukkan Nama",
                         message: "Nama",
                         action: TextInputAction.next),
@@ -54,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
                     labelText("Email atau Nomor Ponsel"),
                     sizedBoxHeight(5),
                     textFormField(
-                        textCtrl: emailOrPhoneCtrl,
+                        textCtrl: _emailOrPhoneCtrl,
                         hintText: "Masukkan Email atau No Ponsel",
                         message: "Email atau No Ponsel",
                         action: TextInputAction.next),
@@ -64,7 +64,7 @@ class RegisterScreen extends StatelessWidget {
                     labelText("Kata Sandi"),
                     sizedBoxHeight(5),
                     textFormFieldForPassword(
-                        textCtrl: passwordCtrl,
+                        textCtrl: _passwordCtrl,
                         hintText: "Masukkan Kata Sandi",
                         isHidden: viewModel.passIsHidden,
                         onTap: () {
@@ -78,7 +78,7 @@ class RegisterScreen extends StatelessWidget {
                     labelText("Masukkan Ulang Kata Sandi"),
                     sizedBoxHeight(5),
                     textFormFieldForPassword(
-                        textCtrl: confirmPasswordCtrl,
+                        textCtrl: _confirmPasswordCtrl,
                         hintText: "Masukkan Kata Sandi",
                         isHidden: viewModel.confirmPassIsHidden,
                         onTap: () {

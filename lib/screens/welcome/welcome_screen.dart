@@ -3,6 +3,7 @@ import 'package:fitness_gym/screens/register/register_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class WelcomeScreen extends StatelessWidget {
           height: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/img/splash_screen.png"),
+              image: AssetImage("assets/img/welcome_screen.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -29,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 200,
                     width: 200,
-                    child: Image.asset("assets/img/logo.png"),
+                    child: SvgPicture.asset("assets/img/logo.svg"),
                   ),
                 ),
                 Expanded(

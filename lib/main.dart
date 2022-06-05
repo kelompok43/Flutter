@@ -1,3 +1,4 @@
+import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => LoginViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DashboardViewModel(),
         )
       ],
       child: MaterialApp(

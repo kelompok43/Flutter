@@ -1,3 +1,4 @@
+import 'package:fitness_gym/screens/dashboard/dashboard_screen.dart';
 import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:fitness_gym/utils/constants.dart';
@@ -71,6 +72,12 @@ class LoginPage extends StatelessWidget {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DashboardScreen(),
+                              ),
+                            );
                           }
                         },
                         child: Text(

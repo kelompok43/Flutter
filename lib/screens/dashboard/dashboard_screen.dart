@@ -1,12 +1,13 @@
-import 'package:fitness_gym/screens/dashboard/aktivitas/aktivitas_screen.dart';
-import 'package:fitness_gym/screens/dashboard/akun/akun_screen.dart';
+import 'package:fitness_gym/screens/aktivitas/aktivitas_screen.dart';
+import 'package:fitness_gym/screens/akun/akun_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
-import 'package:fitness_gym/screens/dashboard/home/home_screen.dart';
-import 'package:fitness_gym/screens/dashboard/kelas/class_screen.dart';
+import 'package:fitness_gym/screens/home/home_screen.dart';
+import 'package:fitness_gym/screens/kelas/class_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:ionicons/ionicons.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -25,14 +26,14 @@ class DashboardScreen extends StatelessWidget {
       body: _screens[viewModel.selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectIndex,
-        onTap: (index)=>viewModel.update(index),
+        onTap: (index) => viewModel.update(index),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center),
+            icon: Icon(Ionicons.barbell),
             label: 'Kelas',
           ),
           BottomNavigationBarItem(
@@ -47,8 +48,10 @@ class DashboardScreen extends StatelessWidget {
         selectedItemColor: primary5,
         selectedFontSize: 10,
         unselectedFontSize: 10,
-        selectedLabelStyle: GoogleFonts.poppins(textStyle:TextStyle(color: primary5)),
-        unselectedLabelStyle: GoogleFonts.poppins(textStyle:TextStyle(color: neutral5)),
+        selectedLabelStyle:
+            GoogleFonts.poppins(textStyle: TextStyle(color: primary5)),
+        unselectedLabelStyle:
+            GoogleFonts.poppins(textStyle: TextStyle(color: neutral5)),
         unselectedItemColor: neutral5,
         showUnselectedLabels: true,
       ),

@@ -42,16 +42,29 @@ class HomeScreen extends StatelessWidget {
                               fontSize: 14)),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 80, left: 16),
-                    child: Text(
-                      "Build 2022. Built by Fitness Gym.",
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14),
-                      ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 16, right: 16, top: 70),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Build 2022. Built by Fitness Gym.",
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14),
+                          ),
+                        ),
+                        ClipRRect(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: SvgPicture.asset("assets/img/logo.svg"),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -60,16 +73,14 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(color: neutral9),
               child: Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20))),
-                child: SingleChildScrollView(
-                    child: Container(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15))),
+                child: Container(
                   margin: const EdgeInsets.only(top: 30),
                   padding: const EdgeInsets.all(16),
                   child: Column(
@@ -296,7 +307,8 @@ class HomeScreen extends StatelessWidget {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)),
                                   image: DecorationImage(
-                                    image: AssetImage("assets/img/mind_n_body.png"),
+                                    image: AssetImage(
+                                        "assets/img/mind_n_body.png"),
                                     fit: BoxFit.fill,
                                   ),
                                 ),
@@ -363,7 +375,8 @@ class HomeScreen extends StatelessWidget {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)),
                                   image: DecorationImage(
-                                    image: AssetImage("assets/img/strength_n_conditions.png"),
+                                    image: AssetImage(
+                                        "assets/img/strength_n_conditions.png"),
                                     fit: BoxFit.fill,
                                   ),
                                 ),
@@ -498,7 +511,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                )),
+                ),
               ),
             ),
           ),

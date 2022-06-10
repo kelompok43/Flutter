@@ -2,7 +2,7 @@ import 'package:fitness_gym/screens/aktivitas/aktivitas_screen.dart';
 import 'package:fitness_gym/screens/akun/akun_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/home/home_screen.dart';
-import 'package:fitness_gym/screens/kelas/class_screen.dart';
+import 'package:fitness_gym/screens/kelas/kelas_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,6 +25,7 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       body: _screens[viewModel.selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: selectIndex,
         onTap: (index) => viewModel.update(index),
         items: const [

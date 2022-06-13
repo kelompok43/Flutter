@@ -68,9 +68,11 @@ class LoginPage extends StatelessWidget {
                       height: 45,
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
+                            viewModel.login(_usernameController.text,
+                                _passwordController.text, context);
                           }
                         },
                         child: Text(

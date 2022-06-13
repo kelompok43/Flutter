@@ -1,3 +1,4 @@
+
 import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -93,8 +95,20 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                        onPressed: () async {
+                          // if (_formKey.currentState!.validate()) {
+                          //   _formKey.currentState!.save();
+
+                          // if (_passwordCtrl != _confirmPasswordCtrl) {
+                          //   showDialog(
+                          //       context: context,
+                          //       builder: (BuildContext context) =>
+                          //           AlertDialog(
+                          //             title:
+                          //                 Text("Confirm Password Tidak Sama"),
+                          //           ));
+                          // }
+                          // }
                         },
                         child: Text(
                           "Daftar",

@@ -1,3 +1,4 @@
+
 import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
@@ -68,7 +69,7 @@ class RegisterScreen extends StatelessWidget {
                         hintText: "Masukkan Kata Sandi",
                         isHidden: viewModel.passIsHidden,
                         onTap: () {
-                          viewModel.passisHidden = !viewModel.passIsHidden;
+                          viewModel.passIsHidden = !viewModel.passIsHidden;
                         },
                         message: "Kata Sandi",
                         action: TextInputAction.next),
@@ -93,8 +94,20 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                        onPressed: () async {
+                          // if (_formKey.currentState!.validate()) {
+                          //   _formKey.currentState!.save();
+
+                          // if (_passwordCtrl != _confirmPasswordCtrl) {
+                          //   showDialog(
+                          //       context: context,
+                          //       builder: (BuildContext context) =>
+                          //           AlertDialog(
+                          //             title:
+                          //                 Text("Confirm Password Tidak Sama"),
+                          //           ));
+                          // }
+                          // }
                         },
                         child: Text(
                           "Daftar",

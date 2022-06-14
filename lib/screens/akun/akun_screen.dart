@@ -1,15 +1,21 @@
+import 'package:fitness_gym/screens/akun/akun_view_model.dart';
 import 'package:fitness_gym/utils/constants.dart';
+import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AkunScreen extends StatelessWidget {
   const AkunScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<AkunViewModel>(context);
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Akun Saya",style: GoogleFonts.poppins(textStyle: const TextStyle(fontSize:14))),
+        title: Text("Akun Saya",
+            style:
+                GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14))),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -58,6 +64,12 @@ class AkunScreen extends StatelessWidget {
                     ))
               ],
             ),
+            sizedBoxHeight(20),
+            ElevatedButton(
+                onPressed: () async {
+                  viewModel.logout(context);
+                },
+                child: const Text("Log Out"))
           ],
         ),
       ),

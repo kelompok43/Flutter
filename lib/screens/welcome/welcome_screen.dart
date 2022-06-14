@@ -25,7 +25,9 @@ class WelcomeScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                const SizedBox(height: 200,),
+                const SizedBox(
+                  height: 200,
+                ),
                 Expanded(
                   child: SizedBox(
                     height: 200,
@@ -46,12 +48,14 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const LoginPage(),
+                                  builder: (context) => const LoginScreen(),
                                 ));
                           },
                           child: Text(
                             "LOG IN",
-                            style: GoogleFonts.poppins(textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+                            style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold)),
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: primary5,
@@ -73,10 +77,11 @@ class WelcomeScreen extends StatelessWidget {
                         },
                         child: Text(
                           "SIGN UP",
-                          style: GoogleFonts.poppins(textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+                          style: GoogleFonts.poppins(
+                              textStyle:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
                         ),
-                        style: ElevatedButton.styleFrom(
-                            primary: neutral9),
+                        style: ElevatedButton.styleFrom(primary: neutral9),
                       ),
                     ),
                   ],

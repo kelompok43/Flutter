@@ -42,8 +42,8 @@ class DashboardScreen extends StatelessWidget {
             label: 'Aktivitas',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
             label: 'Akun',
+            icon: Icon(Icons.person),
           ),
         ],
         selectedItemColor: primary5,

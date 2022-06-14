@@ -92,7 +92,7 @@ Widget textFormFieldForPassword(
       suffixIcon: IconButton(
         onPressed: onTap,
         icon: Icon(
-          isHidden ? Icons.visibility_off : Icons.visibility,
+          isHidden ? Icons.visibility : Icons.visibility_off,
           color: neutral7,
         ),
       ),

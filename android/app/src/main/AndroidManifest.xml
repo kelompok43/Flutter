@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fitness_gym">
    <application
-        android:label="fitness_gym"
+        android:label="Fitness Gym"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        >
         <activity
             android:name=".MainActivity"
             android:exported="true"

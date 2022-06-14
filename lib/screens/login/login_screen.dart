@@ -1,5 +1,5 @@
-import 'package:fitness_gym/screens/dashboard/dashboard_screen.dart';
 import 'package:fitness_gym/screens/login/login_view_model.dart';
+import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/gestures.dart';
@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: Consumer<LoginViewModel>(
+              child: Consumer<RegisterViewModel>(
                   builder: (context, viewModel, child) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,9 +55,9 @@ class LoginPage extends StatelessWidget {
                     textFormFieldForPassword(
                         textCtrl: _passwordController,
                         hintText: "Masukkan Kata Sandi",
-                        isHidden: viewModel.isHidden,
+                        isHidden: viewModel.passIsHidden,
                         onTap: () {
-                          viewModel.isHidden = !viewModel.isHidden;
+                          viewModel.passIsHidden = !viewModel.passIsHidden;
                         },
                         message: "Kata Sandi",
                         action: TextInputAction.next),
@@ -72,8 +72,8 @@ class LoginPage extends StatelessWidget {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-                            Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const DashboardScreen(),), (route) => false);
-                            
+                            viewModel.login(_usernameController.text,
+                                _passwordController.text, context);
                           }
                         },
                         child: Text(

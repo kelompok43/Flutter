@@ -1,5 +1,6 @@
 import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/screens/register/register_view_model.dart';
+import 'package:fitness_gym/screens/splash/splash_screen.dart';
 import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const WelcomeScreen(),
+        home: const SplashScreen(),
         theme: ThemeData(
             fontFamily: 'Poppins', backgroundColor: const Color(0xFFFEFEFE)),
       ),

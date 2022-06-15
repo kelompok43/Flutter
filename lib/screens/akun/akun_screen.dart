@@ -1,4 +1,4 @@
-import 'package:fitness_gym/screens/akun/akun_view_model.dart';
+import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class AkunScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<AkunViewModel>(context);
+    final viewModel = Provider.of<DashboardViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Akun Saya",

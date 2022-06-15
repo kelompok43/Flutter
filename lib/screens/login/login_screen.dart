@@ -1,5 +1,5 @@
 import 'package:fitness_gym/screens/login/login_view_model.dart';
-import 'package:fitness_gym/screens/register/register_view_model.dart';
+// import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/gestures.dart';
@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
-              child: Consumer<RegisterViewModel>(
+              child: Consumer<LoginViewModel>(
                   builder: (context, viewModel, child) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,9 +55,9 @@ class LoginScreen extends StatelessWidget {
                     textFormFieldForPassword(
                         textCtrl: _passwordController,
                         hintText: "Masukkan Kata Sandi",
-                        isHidden: viewModel.passIsHidden,
+                        isHidden: viewModel.isHidden,
                         onTap: () {
-                          viewModel.passIsHidden = !viewModel.passIsHidden;
+                          viewModel.isHidden = !viewModel.isHidden;
                         },
                         message: "Kata Sandi",
                         action: TextInputAction.next),

@@ -13,65 +13,157 @@ class AkunScreen extends StatelessWidget {
     final viewModel = Provider.of<DashboardViewModel>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Akun Saya",
-            style:
-                GoogleFonts.poppins(textStyle: const TextStyle(fontSize: 14))),
+        title: Text(
+          "Akun Saya",
+          style: GoogleFonts.poppins(
+            textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),
+          ),
+        ),
+        backgroundColor: neutral9,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
-                  child: SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: Image.asset("assets/img/img.png"),
-                  ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: primary5,
+            ),
+            title: Text(
+              "Ulil Ambri",
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: neutral9,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Ulil Ambri",
-                      style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: neutral9,
+              ),
+            ),
+            subtitle: Text(
+              "+628123456789",
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: neutral7,
+                ),
+              ),
+            ),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.mode_edit_outlined,
+                color: primary4,
+              ),
+            ),
+          ),
+          Divider(
+            height: 0,
+            color: neutral3,
+          ),
+          sizedBoxHeight(20),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Text(
+              "Informasi Lain",
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: neutral9,
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  sizedBoxHeight(10),
+                  Container(
+                    color: Colors.white,
+                    child: Table(
+                      border: TableBorder.all(
+                          color: neutral3,
+                          borderRadius: BorderRadius.circular(5)),
+                      children: [
+                        TableRow(
+                          children: [
+                            ListTile(
+                              leading: const Text("Membership"),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios,
+                                color: primary4,
+                              ),
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                        TableRow(
+                          children: [
+                            ListTile(
+                              leading: const Text("Membership"),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios,
+                                color: primary4,
+                              ),
+                              onTap: () {},
+                            ),
+                          ],
+                        ),
+                        TableRow(
+                          children: [
+                            ListTile(
+                              leading: const Text("Membership"),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios,
+                                color: primary4,
+                              ),
+                              onTap: () {},
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  sizedBoxHeight(30),
+                  Text(
+                    "Versi Aplikasi : 1.1.1",
+                    style: GoogleFonts.poppins(
+                        color: neutral3,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  sizedBoxHeight(30),
+                  SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        viewModel.logout(context);
+                      },
+                      child: Text(
+                        "Keluar",
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                                color: danger4,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700)),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        side: BorderSide(
+                          color: danger4,
+                          width: 2,
                         ),
                       ),
                     ),
-                    Text(
-                      "+628123456789",
-                      style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: neutral7,
-                      )),
-                    )
-                  ],
-                ),
-                IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.mode_outlined,
-                      color: primary4,
-                    ))
-              ],
+                  )
+                ],
+              ),
             ),
-            sizedBoxHeight(20),
-            ElevatedButton(
-                onPressed: () async {
-                  viewModel.logout(context);
-                },
-                child: const Text("Log Out"))
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

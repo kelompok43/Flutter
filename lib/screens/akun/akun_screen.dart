@@ -1,9 +1,13 @@
+import 'package:fitness_gym/screens/akun/membership_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
+import 'package:fitness_gym/screens/terms_n_conditions/terms_n_conditions.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import 'edit_akun_screen.dart';
 
 class AkunScreen extends StatelessWidget {
   const AkunScreen({Key? key}) : super(key: key);
@@ -16,7 +20,10 @@ class AkunScreen extends StatelessWidget {
         title: Text(
           "Akun Saya",
           style: GoogleFonts.poppins(
-            textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
         backgroundColor: neutral9,
@@ -49,7 +56,13 @@ class AkunScreen extends StatelessWidget {
               ),
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EditAkunScreen(),
+                    ));
+              },
               icon: Icon(
                 Icons.mode_edit_outlined,
                 color: primary4,
@@ -92,8 +105,29 @@ class AkunScreen extends StatelessWidget {
                             ListTile(
                               leading: const Text("Membership"),
                               trailing: Icon(
-                                Icons.arrow_forward_ios,
+                                Icons.arrow_forward_ios_rounded,
                                 color: primary4,
+                                size: 20,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const MembershipScreen(),
+                                    ));
+                              },
+                            ),
+                          ],
+                        ),
+                        TableRow(
+                          children: [
+                            ListTile(
+                              leading: const Text("Ubah kata sandi"),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                color: primary4,
+                                size: 20,
                               ),
                               onTap: () {},
                             ),
@@ -102,24 +136,20 @@ class AkunScreen extends StatelessWidget {
                         TableRow(
                           children: [
                             ListTile(
-                              leading: const Text("Membership"),
+                              leading: const Text("Syarat & Ketentuan"),
                               trailing: Icon(
-                                Icons.arrow_forward_ios,
+                                Icons.arrow_forward_ios_rounded,
                                 color: primary4,
+                                size: 20,
                               ),
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            ListTile(
-                              leading: const Text("Membership"),
-                              trailing: Icon(
-                                Icons.arrow_forward_ios,
-                                color: primary4,
-                              ),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const TermsAndConditionsScreen(),
+                                    ));
+                              },
                             ),
                           ],
                         )
@@ -139,22 +169,83 @@ class AkunScreen extends StatelessWidget {
                     height: 40,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () async {
-                        viewModel.logout(context);
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  actionsAlignment: MainAxisAlignment.center,
+                                  content: Text(
+                                    "Apakah anda yakin ingin keluar ?",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                      color: neutral8,
+                                    )),
+                                  ),
+                                  alignment: Alignment.center,
+                                  actions: [
+                                    SizedBox(
+                                      width: 130,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          viewModel.logout(context);
+                                        },
+                                        child: Text(
+                                          "Ya",
+                                          style: GoogleFonts.poppins(
+                                            textStyle: TextStyle(
+                                                color: primary5,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 12),
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.white,
+                                          side: BorderSide(
+                                            width: 1,
+                                            color: primary5,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 130,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "Batal",
+                                          style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                            primary: primary4),
+                                      ),
+                                    )
+                                  ],
+                                ));
                       },
                       child: Text(
                         "Keluar",
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
-                                color: danger4,
+                                color: danger5,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700)),
                       ),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.white,
                         side: BorderSide(
-                          color: danger4,
-                          width: 2,
+                          color: danger5,
+                          width: 1,
                         ),
                       ),
                     ),

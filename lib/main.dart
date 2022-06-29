@@ -1,13 +1,19 @@
+import 'package:camera/camera.dart';
 import 'package:fitness_gym/screens/akun/akun_view_model.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/login/login_view_model.dart';
+import 'package:fitness_gym/screens/payment/payment_view_model.dart';
 import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await availableCameras();
+  await initializeDateFormatting('id_ID', null)
+      .then((_) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,12 +35,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => AkunViewModel(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => PaymentViewModel(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
         theme: ThemeData(
-            fontFamily: 'Poppins', backgroundColor: const Color(0xFFFEFEFE)),
+          fontFamily: 'Poppins',
+          backgroundColor: const Color(0xFFFEFEFE),
+        ),
       ),
     );
   }

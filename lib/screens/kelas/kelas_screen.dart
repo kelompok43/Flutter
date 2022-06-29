@@ -88,30 +88,22 @@ class KelasScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                sizedBoxHeight(5),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10, right: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        height: 2,
-                                        width: 50,
-                                        decoration: const BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: Colors.white,
-                                              width: 1,
-                                            ),
-                                          ),
+                                      left: 10, top: 5, bottom: 10),
+                                  child: Container(
+                                    height: 2,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: Colors.white,
+                                          width: 1,
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
-                                sizedBoxHeight(10)
                               ],
                             )
                           ],
@@ -147,30 +139,22 @@ class KelasScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              sizedBoxHeight(5),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: 2,
-                                      width: 50,
-                                      decoration: const BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: Colors.white,
-                                            width: 1,
-                                          ),
-                                        ),
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 5, bottom: 10),
+                                child: Container(
+                                  height: 2,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.white,
+                                        width: 1,
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                              sizedBoxHeight(10)
                             ],
                           )
                         ],
@@ -225,30 +209,22 @@ class KelasScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              sizedBoxHeight(5),
                               Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: 2,
-                                      width: 50,
-                                      decoration: const BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: Colors.white,
-                                            width: 1,
-                                          ),
-                                        ),
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 5, bottom: 10),
+                                child: Container(
+                                  height: 2,
+                                  width: 50,
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.white,
+                                        width: 1,
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                              sizedBoxHeight(10)
                             ],
                           )
                         ],
@@ -283,27 +259,20 @@ class KelasScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                sizedBoxHeight(5),
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10, right: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        height: 2,
-                                        width: 50,
-                                        decoration: const BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(
-                                              color: Colors.white,
-                                              width: 1,
-                                            ),
-                                          ),
+                                      left: 10, top: 5, bottom: 10),
+                                  child: Container(
+                                    height: 2,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: Colors.white,
+                                          width: 1,
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ]),

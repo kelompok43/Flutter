@@ -3,11 +3,11 @@ import 'package:fitness_gym/screens/kelas_offline/kelas_offline_cardio_screen.da
 import 'package:fitness_gym/screens/kelas_offline/kelas_offline_cycling_screen.dart';
 import 'package:fitness_gym/screens/kelas_offline/kelas_offline_mindbody_screen.dart';
 import 'package:fitness_gym/screens/kelas_offline/kelas_offline_strength_screen.dart';
+import 'package:fitness_gym/screens/payment/payment_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -94,7 +94,14 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PaymentScreen(),
+                            ),
+                          );
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 12),
@@ -104,10 +111,11 @@ class HomeScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Icon(
-                                FontAwesomeIcons.crown,
-                                color: Color(0xFF806A00),
-                              ),
+                              SizedBox(
+                                  height: 24,
+                                  width: 30,
+                                  child:
+                                      SvgPicture.asset("assets/img/crown.svg")),
                               Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

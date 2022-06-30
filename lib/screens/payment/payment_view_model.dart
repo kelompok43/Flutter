@@ -9,6 +9,7 @@ class PaymentViewModel extends ChangeNotifier {
   String get selectedValue => _selectedValue;
   File? _imagePath;
   File? get imagePath => _imagePath;
+  var uploadState = UploadBuktiState.initial;
   set imagePath(File? newValue) {
     _imagePath = newValue;
     notifyListeners();
@@ -19,4 +20,14 @@ class PaymentViewModel extends ChangeNotifier {
     _selectedValue = newSelectedValue;
     notifyListeners();
   }
+
+  void uploadBukti() async {
+    uploadState = UploadBuktiState.loading;
+    notifyListeners();
+    await Future.delayed(const Duration(seconds: 1));
+    uploadState = UploadBuktiState.done;
+    notifyListeners();
+  }
 }
+
+enum UploadBuktiState { initial, loading, done }

@@ -94,7 +94,9 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                         height: 40,
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                           child: Text(
                             "Cek Status Member",
                             style: GoogleFonts.poppins(

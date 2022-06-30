@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:fitness_gym/screens/payment/payment_camera_screen.dart';
+import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -39,43 +40,79 @@ class _CameraScreenState extends State<CameraScreen> {
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            return Stack(
               children: [
-                SafeArea(child: CameraPreview(_controller)),
-                GestureDetector(
-                  onTap: () async {
-                    try {
-                      // Ensure that the camera is initialized.
-                      await _initializeControllerFuture;
-
-                      // Attempt to take a picture and get the file `image`
-                      // where it was saved.
-                      final image = await _controller.takePicture();
-
-                      // If the picture was taken, display it on a new screen.
-                      Navigator.pop(context, image);
-                    } catch (e) {
-                      // If an error occurs, log the error to the console.
-                      print(e);
-                    }
-                  },
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          width: 2,
-                          color: Colors.white,
-                        )),
-                    child: Center(
+                SizedBox(
+                  height: double.infinity,
+                  child: CameraPreview(_controller),
+                ),
+                Positioned(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    child: SafeArea(
                       child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
+                        padding: const EdgeInsets.all(
+                          10,
+                        ),
+                        color: Color.fromARGB(102, 0, 0, 0),
+                        child: Row(children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.white,
+                            ),
+                          )
+                        ]),
+                      ),
+                    )),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    height: 150,
+                    color: Color.fromARGB(102, 0, 0, 0),
+                    child: GestureDetector(
+                      onTap: () async {
+                        try {
+                          // Ensure that the camera is initialized.
+                          await _initializeControllerFuture;
+
+                          // Attempt to take a picture and get the file `image`
+                          // where it was saved.
+                          final image = await _controller.takePicture();
+
+                          // If the picture was taken, display it on a new screen.
+                          Navigator.pop(context, image);
+                        } catch (e) {
+                          // If an error occurs, log the error to the console.
+                          print(e);
+                        }
+                      },
+                      child: Center(
+                        child: Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 5,
+                                color: Colors.white,
+                              )),
+                          child: Center(
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),

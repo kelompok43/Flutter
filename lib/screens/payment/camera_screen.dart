@@ -54,16 +54,16 @@ class _CameraScreenState extends State<CameraScreen> {
                       final image = await _controller.takePicture();
 
                       // If the picture was taken, display it on a new screen.
-
-                      await Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => PaymentCameraScreen(
-                            // Pass the automatically generated path to
-                            // the DisplayPictureScreen widget.
-                            imagePath: image.path,
-                          ),
-                        ),
-                      );
+                      Navigator.pop(context, image);
+                      // await Navigator.of(context).pushReplacement(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => PaymentCameraScreen(
+                      //       // Pass the automatically generated path to
+                      //       // the DisplayPictureScreen widget.
+                      //       imagePath: image.path,
+                      //     ),
+                      //   ),
+                      // );
                     } catch (e) {
                       // If an error occurs, log the error to the console.
                       print(e);

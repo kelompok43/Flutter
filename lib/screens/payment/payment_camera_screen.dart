@@ -8,10 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PaymentCameraScreen extends StatelessWidget {
-  final String? imagePath;
-  const PaymentCameraScreen({Key? key, this.imagePath}) : super(key: key);
+class PaymentCameraScreen extends StatefulWidget {
+  const PaymentCameraScreen({Key? key}) : super(key: key);
 
+  @override
+  State<PaymentCameraScreen> createState() => _PaymentCameraScreenState();
+}
+
+class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
+  String? imagePath;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -290,48 +295,38 @@ class PaymentCameraScreen extends StatelessWidget {
                   ),
                   child: imagePath != null
                       ? Image.file(File(imagePath!))
-                      : Stack(
-                          children: [
-                            GestureDetector(
-                              onTap: () async {
-                                final cameras = await availableCameras();
-                                final firstCamera = cameras.first;
-                                await availableCameras()
-                                    .then((_) => Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => CameraScreen(
-                                            cameras: firstCamera,
-                                          ),
-                                        )));
-                              },
-                              child: Center(
-                                child: Container(
-                                  height: 80,
-                                  width: 80,
-                                  decoration: BoxDecoration(
-                                    color: primary5,
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                  child: const Icon(
-                                    Icons.camera_alt,
-                                    color: Colors.white,
-                                    size: 35,
+                      : Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              GestureDetector(
+                                onTap: takePicture,
+                                child: Center(
+                                  child: Container(
+                                    height: 80,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                      color: primary5,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: const Icon(
+                                      Icons.camera_alt,
+                                      color: Colors.white,
+                                      size: 35,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 75, top: 170),
-                              child: Text(
+                              sizedBoxHeight(13),
+                              Text(
                                 "Upload Struk Pembayaran-mu",
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
                                   color: neutral8,
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                 ),
                 sizedBoxHeight(36),
@@ -356,18 +351,7 @@ class PaymentCameraScreen extends StatelessWidget {
                       height: 40,
                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
-                        onPressed: () async {
-                          final cameras = await availableCameras();
-                          final firstCamera = cameras.first;
-                          await availableCameras()
-                              .then((_) => Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CameraScreen(
-                                      cameras: firstCamera,
-                                    ),
-                                  )));
-                        },
+                        onPressed: takePicture,
                         child: Text(
                           "Ambil Foto",
                           style: GoogleFonts.poppins(
@@ -388,5 +372,23 @@ class PaymentCameraScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> takePicture() async {
+    final cameras = await availableCameras();
+    final firstCamera = cameras.first;
+    var picture = await Navigator.push<XFile>(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CameraScreen(
+            cameras: firstCamera,
+          ),
+        ));
+
+    if (picture != null) {
+      setState(() {
+        imagePath = picture.path;
+      });
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:fitness_gym/screens/akun/membership_screen.dart';
+import 'package:fitness_gym/screens/change_password/change_password_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/terms_n_conditions/terms_n_conditions.dart';
 import 'package:fitness_gym/utils/constants.dart';
@@ -129,7 +130,9 @@ class AkunScreen extends StatelessWidget {
                                 color: primary4,
                                 size: 20,
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ChangePasswordScreen(),));
+                              },
                             ),
                           ],
                         ),

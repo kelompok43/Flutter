@@ -4,6 +4,8 @@ import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/fa_solid.dart';
 
 class MembershipScreen extends StatelessWidget {
   const MembershipScreen({Key? key}) : super(key: key);
@@ -156,10 +158,13 @@ class MembershipScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                               height: 24,
                               width: 30,
-                              child: SvgPicture.asset("assets/img/crown.svg")),
+                              child: Iconify(
+                                  FaSolid.crown,
+                                  color: Color(0xFF806A00),
+                                ),),
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

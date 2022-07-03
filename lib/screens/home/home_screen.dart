@@ -9,6 +9,8 @@ import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/fa_solid.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -111,11 +113,14 @@ class HomeScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(
-                                  height: 24,
-                                  width: 30,
-                                  child:
-                                      SvgPicture.asset("assets/img/crown.svg")),
+                              const SizedBox(
+                                height: 24,
+                                width: 30,
+                                child: Iconify(
+                                  FaSolid.crown,
+                                  color: Color(0xFF806A00),
+                                ),
+                              ),
                               Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

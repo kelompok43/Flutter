@@ -78,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  colorful_iconify_flutter:
+    dependency: transitive
+    description:
+      name: colorful_iconify_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   cross_file:
     dependency: transitive
     description:
@@ -92,13 +99,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
   dio:
     dependency: "direct main"
     description:
@@ -163,13 +163,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  font_awesome_flutter:
-    dependency: "direct main"
-    description:
-      name: font_awesome_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "10.1.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -191,6 +184,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  iconify_flutter:
+    dependency: "direct main"
+    description:
+      name: iconify_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   intl:
     dependency: "direct main"
     description:

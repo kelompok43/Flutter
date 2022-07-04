@@ -131,7 +131,12 @@ class AkunScreen extends StatelessWidget {
                                 size: 20,
                               ),
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ChangePasswordScreen(),));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ChangePasswordScreen(),
+                                    ));
                               },
                             ),
                           ],

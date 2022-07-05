@@ -299,7 +299,8 @@ class EditAkunScreen extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Tambahkan Email",
@@ -419,7 +420,8 @@ class EditAkunScreen extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Tambahkan Nomor Telepon",
@@ -499,12 +501,101 @@ class EditAkunScreen extends StatelessWidget {
                     height: 45,
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        final passwordCtrl = TextEditingController();
+                        // if(_formKey.currentState!.validate()){
+
+                        // }
+                        showDialog(
+                            builder: (context) => AlertDialog(
+                                  title: Text(
+                                    "Masukkan Password Akun Anda",
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      color: info7,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  titlePadding: const EdgeInsets.symmetric(
+                                    vertical: 20,
+                                    horizontal: 16,
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  actionsPadding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 10,
+                                  ),
+                                  content: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          "Password",
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: neutral9,
+                                          ),
+                                        ),
+                                        sizedBoxHeight(5),
+                                        TextFormField(
+                                          controller: passwordCtrl,
+                                          style:
+                                              GoogleFonts.poppins(fontSize: 12),
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                const EdgeInsets.all(10),
+                                            hintText: "hintText",
+                                            hintStyle: GoogleFonts.poppins(),
+                                            focusColor: primary3,
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: primary3, width: 1),
+                                            ),
+                                            enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                              color: primary3,
+                                              width: 0.8,
+                                            )),
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                            ),
+                                          ),
+                                        )
+                                      ]),
+                                  actions: [
+                                    SizedBox(
+                                      height: 45,
+                                      width: MediaQuery.of(context).size.width,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "OKE",
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: primary4,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                            context: context);
+                      },
                       child: Text(
                         "SIMPAN",
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           color: Colors.white,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       style: ElevatedButton.styleFrom(

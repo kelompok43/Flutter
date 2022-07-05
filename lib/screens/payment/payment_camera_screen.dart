@@ -62,7 +62,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SvgPicture.asset('assets/img/sukses_upload_bukti.svg'),
+                      SvgPicture.asset('assets/icons/sukses_upload_bukti.svg'),
                       sizedBoxHeight(40),
                       Text(
                         "Selamat!",
@@ -300,7 +300,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                     child: Image.asset("assets/img/foto_buram.png")),
                 Container(
                   margin: const EdgeInsets.only(top: 41, left: 33),
-                  child: SvgPicture.asset("assets/img/salah.svg"),
+                  child: SvgPicture.asset("assets/icons/salah.svg"),
                 )
               ],
             ),
@@ -336,7 +336,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                     child: Image.asset("assets/img/foto_terang.png")),
                 Container(
                   margin: const EdgeInsets.only(top: 41, left: 33),
-                  child: SvgPicture.asset("assets/img/salah.svg"),
+                  child: SvgPicture.asset("assets/icons/salah.svg"),
                 )
               ],
             ),
@@ -372,7 +372,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                     child: Image.asset("assets/img/foto_gelap.png")),
                 Container(
                   margin: const EdgeInsets.only(top: 41, left: 33),
-                  child: SvgPicture.asset("assets/img/salah.svg"),
+                  child: SvgPicture.asset("assets/icons/salah.svg"),
                 )
               ],
             ),
@@ -411,7 +411,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 41, left: 33),
-                  child: SvgPicture.asset("assets/img/salah.svg"),
+                  child: SvgPicture.asset("assets/icons/salah.svg"),
                 )
               ],
             ),

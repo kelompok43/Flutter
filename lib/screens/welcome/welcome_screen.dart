@@ -33,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: SizedBox(
                       height: 200,
                       width: 200,
-                      child: SvgPicture.asset("assets/img/logo.svg"),
+                      child: SvgPicture.asset("assets/icons/logo.svg"),
                     ),
                   ),
                   Expanded(

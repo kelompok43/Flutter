@@ -40,7 +40,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
                 SizedBox(
                   height: 48,
                   width: 80,
-                  child: SvgPicture.asset("assets/img/logo.svg"),
+                  child: SvgPicture.asset("assets/icons/logo.svg"),
                 ),
                 Text(
                   "TERMS AND CONDITIONS",

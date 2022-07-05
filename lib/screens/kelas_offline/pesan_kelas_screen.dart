@@ -77,7 +77,7 @@ class PesanKelasScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               SvgPicture.asset(
-                                                  "assets/img/pepicons_stopwatch.svg"),
+                                                  "assets/icons/pepicons_stopwatch.svg"),
                                               sizedBoxWidth(13),
                                               Text(
                                                 "15 Menit",
@@ -102,7 +102,7 @@ class PesanKelasScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               SvgPicture.asset(
-                                                  "assets/img/pepicons_stopwatch(1).svg"),
+                                                  "assets/icons/pepicons_stopwatch(1).svg"),
                                               sizedBoxWidth(13),
                                               Text(
                                                 "30 Menit",
@@ -127,7 +127,7 @@ class PesanKelasScreen extends StatelessWidget {
                                           Row(
                                             children: [
                                               SvgPicture.asset(
-                                                  "assets/img/pepicons_stopwatch(2).svg"),
+                                                  "assets/icons/pepicons_stopwatch(2).svg"),
                                               sizedBoxWidth(13),
                                               Text(
                                                 "Dimulai",

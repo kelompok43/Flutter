@@ -76,7 +76,7 @@ class AktivitasScreen extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         SvgPicture.asset(
-                                            'assets/img/urutkan.svg'),
+                                            'assets/icons/urutkan.svg'),
                                         sizedBoxWidth(5),
                                         Text(
                                           'Urutkan',
@@ -102,7 +102,7 @@ class AktivitasScreen extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         SvgPicture.asset(
-                                            'assets/img/system-uicons_filtering.svg'),
+                                            'assets/icons/system-uicons_filtering.svg'),
                                         sizedBoxWidth(5),
                                         Text(
                                           'Filter',

@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: SizedBox(
           width: 200,
           height: 200,
-          child: SvgPicture.asset("assets/img/splash.svg"),
+          child: SvgPicture.asset("assets/icons/splash.svg"),
         ),
       ),
     );

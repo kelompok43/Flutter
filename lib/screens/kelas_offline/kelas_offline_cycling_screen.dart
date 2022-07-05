@@ -417,7 +417,7 @@ class _KelasOfflineCyclingState extends State<KelasOfflineCycling>
                                               width: 20,
                                               height: 18,
                                               child: SvgPicture.asset(
-                                                  "assets/img/crown.svg")),
+                                                  "assets/icons/crown.svg")),
                                           Text(
                                             "Upgrade",
                                             style: GoogleFonts.poppins(

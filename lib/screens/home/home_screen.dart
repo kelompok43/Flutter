@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                           child: SizedBox(
                             width: 50,
                             height: 50,
-                            child: SvgPicture.asset("assets/img/logo.svg"),
+                            child: SvgPicture.asset("assets/icons/logo.svg"),
                           ),
                         ),
                       ],
@@ -290,11 +290,11 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(10),
-                                child: SvgPicture.asset("assets/img/live.svg"),
+                                child: SvgPicture.asset("assets/icons/live.svg"),
                               ),
                               Center(
                                   child: SvgPicture.asset(
-                                      "assets/img/virtual_studio.svg")),
+                                      "assets/icons/virtual_studio.svg")),
                             ],
                           ),
                         ),

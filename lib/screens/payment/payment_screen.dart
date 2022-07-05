@@ -149,7 +149,7 @@ class PaymentScreen extends StatelessWidget {
                                 children: [
                                   sizedBoxHeight(10),
                                   SvgPicture.asset(
-                                      "assets/img/bottom_sheet_drag.svg"),
+                                      "assets/icons/bottom_sheet_drag.svg"),
                                   Expanded(
                                       child: Container(
                                     padding: const EdgeInsets.symmetric(
@@ -362,7 +362,7 @@ class PaymentScreen extends StatelessWidget {
                       Column(
                         children: [
                           SvgPicture.asset(
-                            "assets/img/icon_payment_1.svg",
+                            "assets/icons/icon_payment_1.svg",
                             width: 52,
                             height: 48,
                           ),
@@ -379,7 +379,7 @@ class PaymentScreen extends StatelessWidget {
                       Column(
                         children: [
                           SvgPicture.asset(
-                            "assets/img/icon_payment_2.svg",
+                            "assets/icons/icon_payment_2.svg",
                             width: 52,
                             height: 48,
                           ),

@@ -44,7 +44,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           bottom: 24,
                         ),
                         child: SvgPicture.asset(
-                            "assets/img/change_password_icon.svg"),
+                            "assets/icons/change_password_icon.svg"),
                       ),
                       Text(
                         "Ubah Password",

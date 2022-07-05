@@ -2,7 +2,6 @@ import 'package:fitness_gym/screens/payment/payment_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/fa_solid.dart';
@@ -159,12 +158,13 @@ class MembershipScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const SizedBox(
-                              height: 24,
-                              width: 30,
-                              child: Iconify(
-                                  FaSolid.crown,
-                                  color: Color(0xFF806A00),
-                                ),),
+                            height: 24,
+                            width: 30,
+                            child: Iconify(
+                              FaSolid.crown,
+                              color: Color(0xFF806A00),
+                            ),
+                          ),
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

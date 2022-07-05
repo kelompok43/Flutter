@@ -24,7 +24,7 @@ class KelasScreen extends StatelessWidget {
                     color: Color(0xFF8BD0CB),
                   ),
                   child: Center(
-                    child: SvgPicture.asset("assets/img/virtual_studio.svg"),
+                    child: SvgPicture.asset("assets/icons/virtual_studio.svg"),
                   ),
                 )
               ],

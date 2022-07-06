@@ -10,7 +10,6 @@ class PesanKelasScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool checked = false;
     var date = DateTime.now();
     var dateFormat = DateFormat('EEEE, d MMMM', 'id_ID').format(date);
     return Scaffold(
@@ -21,7 +20,7 @@ class PesanKelasScreen extends StatelessWidget {
             Container(
               height: 300,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/img/cycling.png"),
                   fit: BoxFit.cover,
@@ -93,7 +92,7 @@ class PesanKelasScreen extends StatelessWidget {
                                                   child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.end,
-                                                children: [
+                                                children: const [
                                                   Icon(Icons.add_box),
                                                 ],
                                               )),
@@ -118,7 +117,7 @@ class PesanKelasScreen extends StatelessWidget {
                                                   child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.end,
-                                                children: [
+                                                children: const [
                                                   Icon(Icons.add_box),
                                                 ],
                                               )),
@@ -143,7 +142,7 @@ class PesanKelasScreen extends StatelessWidget {
                                                   child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.end,
-                                                children: [
+                                                children: const [
                                                   Icon(Icons.add_box),
                                                 ],
                                               )),

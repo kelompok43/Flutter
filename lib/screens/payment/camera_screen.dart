@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:fitness_gym/screens/payment/payment_camera_screen.dart';
-import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class CameraScreen extends StatefulWidget {

@@ -2,7 +2,6 @@ import 'package:fitness_gym/screens/kelas_offline/pesan_kelas_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:fitness_gym/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -40,7 +39,6 @@ class _KelasOfflineCyclingState extends State<KelasOfflineCycling>
   Widget build(BuildContext context) {
     var date = DateTime.now();
     var dateFormat = DateFormat('EEEE, d MMMM', 'id_ID').format(date);
-    final scrolled = Constraints;
     return Scaffold(
       // appBar: AppBar(
       //   backgroundColor:neutral9,

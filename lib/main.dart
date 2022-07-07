@@ -6,6 +6,7 @@ import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/screens/payment/payment_view_model.dart';
 import 'package:fitness_gym/screens/register/register_view_model.dart';
 import 'package:fitness_gym/screens/splash/splash_screen.dart';
+import 'package:fitness_gym/screens/splash/splash_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => ChangePasswordViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SplashViewModel(),
         ),
       ],
       child: MaterialApp(

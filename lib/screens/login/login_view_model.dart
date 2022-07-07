@@ -20,6 +20,7 @@ class LoginViewModel extends ChangeNotifier {
       String _token = loginUser['token'];
       final sharedPref = await SharedPreferences.getInstance();
       await sharedPref.setString('token', _token);
+      await sharedPref.setString('email', email);
       SnackBar snackBar = SnackBar(
         behavior: SnackBarBehavior.floating,
         backgroundColor: primary5,
@@ -44,7 +45,7 @@ class LoginViewModel extends ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     } catch (e) {
-      throw Exception("Gagal Login");
+      print(e);
     }
   }
 }

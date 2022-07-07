@@ -9,8 +9,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:ionicons/ionicons.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      var viewModel = Provider.of<DashboardViewModel>(context,listen: false);
+      // viewModel.getDataUser(context);
+     
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +36,8 @@ class DashboardScreen extends StatelessWidget {
       const AktivitasScreen(),
       const AkunScreen(),
     ];
-    var viewModel = Provider.of<DashboardViewModel>(context);
-    int selectIndex = viewModel.selectedIndex;
+     var viewModel = Provider.of<DashboardViewModel>(context);
+ int selectIndex = viewModel.selectedIndex;
     return Scaffold(
       body: _screens[viewModel.selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

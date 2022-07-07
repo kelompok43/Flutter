@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fitness_gym/models/api/user_api.dart';
+import 'package:fitness_gym/models/api/user_service.dart';
 import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';

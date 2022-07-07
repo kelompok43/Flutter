@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:fitness_gym/models/api/user_api.dart';
+import 'package:fitness_gym/models/api/user_service.dart';
 import 'package:fitness_gym/models/entities/user_entity.dart';
 import 'package:fitness_gym/models/preferences/user_preferences.dart';
+import 'package:fitness_gym/models/responses/api_error_response.dart';
 import 'package:fitness_gym/models/responses/login_response.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_screen.dart';
 import 'package:fitness_gym/utils/constants.dart';
@@ -49,12 +50,13 @@ class LoginViewModel extends ChangeNotifier {
           ),
           (route) => false);
     } on DioError catch (e) {
-      if (e.response!.statusCode == 400) {
+      if (e.response?.data != null) {
+        var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
         SnackBar snackBar = SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: primary5,
           duration: const Duration(seconds: 2),
-          content: const Text('Email Atau Password Salah'),
+          content: Text(errorResponse.message ?? ""),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }

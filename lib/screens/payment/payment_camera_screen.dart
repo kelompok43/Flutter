@@ -19,15 +19,14 @@ class PaymentCameraScreen extends StatefulWidget {
 }
 
 class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
-  String? imagePath;
-  var uploadingState = UploadBuktiState.initial;
+  var uploadingState = TransactionState.initial;
   @override
   Widget build(BuildContext context) {
     return Consumer<PaymentViewModel>(
       builder: (context, viewModel, child) {
         switch (viewModel.uploadState) {
           //tampilan saat upload bukti tf
-          case UploadBuktiState.loading:
+          case TransactionState.loading:
             return Scaffold(
               body: Center(
                 child: Column(
@@ -54,7 +53,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
               ),
             );
           //tampilan saat berhasil upload bukti tf
-          case UploadBuktiState.done:
+          case TransactionState.done:
             return Scaffold(
               body: Padding(
                 padding: const EdgeInsets.all(16),
@@ -134,7 +133,7 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
               ),
             );
           //tampilan sebelum upload, menampilkan tombol untuk ambil foto dan unggah foto, panduan, ketentuan dll
-          case UploadBuktiState.initial:
+          case TransactionState.initial:
             return Scaffold(
               appBar: AppBar(
                 title: Text(
@@ -184,11 +183,11 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                               width: 2,
                             ),
                           ),
-                          child: imagePath != null
+                          child: viewModel.imagePath != null
                               ? ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.file(
-                                    File(imagePath!),
+                                    viewModel.imagePath!,
                                     fit: BoxFit.cover,
                                   ),
                                 )
@@ -234,7 +233,9 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
                               height: 40,
                               width: MediaQuery.of(context).size.width,
                               child: ElevatedButton(
-                                onPressed: viewModel.uploadBukti,
+                                onPressed: () {
+                                  viewModel.uploadBukti(context);
+                                },
                                 child: Text(
                                   "Unggah Foto",
                                   style: GoogleFonts.poppins(
@@ -442,9 +443,8 @@ class _PaymentCameraScreenState extends State<PaymentCameraScreen> {
         ));
 
     if (picture != null) {
-      setState(() {
-        imagePath = picture.path;
-      });
+      Provider.of<PaymentViewModel>(context, listen: false).imagePath =
+          File(picture.path);
     }
   }
 

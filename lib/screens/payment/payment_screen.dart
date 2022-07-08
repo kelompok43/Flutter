@@ -70,7 +70,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         width: 62,
                         child: Image.asset("assets/img/BRI.png"),
                       ),
-                      sizedBoxWidth(125),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

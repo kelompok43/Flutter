@@ -34,116 +34,114 @@ class AktivitasScreen extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: Container(
-                child: TabBarView(
-                  children: [
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 15,
-                              left: 15,
-                              right: 15,
-                            ),
-                            child: Text(
-                              "Aktivitas Hari Ini",
-                              style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
+              child: TabBarView(
+                children: [
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 15,
+                            left: 15,
+                            right: 15,
+                          ),
+                          child: Text(
+                            "Aktivitas Hari Ini",
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600),
                             ),
                           ),
-                          Expanded(
-                            child: ListView(
-                              children: [Container()],
-                            ),
-                          )
-                        ]),
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 10),
-                            color: Colors.white,
-                            height: 54,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        SvgPicture.asset(
-                                            'assets/icons/urutkan.svg'),
-                                        sizedBoxWidth(5),
-                                        Text(
-                                          'Urutkan',
-                                          style: TextStyle(color: primary6),
-                                        ),
-                                      ],
-                                    ),
-                                    style:
-                                        TextButton.styleFrom(primary: primary6),
+                        ),
+                        Expanded(
+                          child: ListView(
+                            children: [Container()],
+                          ),
+                        )
+                      ]),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          color: Colors.white,
+                          height: 54,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      SvgPicture.asset(
+                                          'assets/icons/urutkan.svg'),
+                                      sizedBoxWidth(5),
+                                      Text(
+                                        'Urutkan',
+                                        style: TextStyle(color: primary6),
+                                      ),
+                                    ],
                                   ),
+                                  style:
+                                      TextButton.styleFrom(primary: primary6),
                                 ),
-                                VerticalDivider(
-                                  thickness: 1,
-                                  width: 20,
-                                  indent: 5,
-                                  endIndent: 5,
-                                  color: neutral3,
-                                ),
-                                Expanded(
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        SvgPicture.asset(
-                                            'assets/icons/system-uicons_filtering.svg'),
-                                        sizedBoxWidth(5),
-                                        Text(
-                                          'Filter',
-                                          style: TextStyle(color: primary6),
-                                        ),
-                                      ],
-                                    ),
-                                    style:
-                                        TextButton.styleFrom(primary: primary6),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 15,
-                              left: 15,
-                              right: 15,
-                            ),
-                            child: Text(
-                              "Aktivitas Selesai",
-                              style: GoogleFonts.poppins(
-                                textStyle: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
                               ),
+                              VerticalDivider(
+                                thickness: 1,
+                                width: 20,
+                                indent: 5,
+                                endIndent: 5,
+                                color: neutral3,
+                              ),
+                              Expanded(
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      SvgPicture.asset(
+                                          'assets/icons/system-uicons_filtering.svg'),
+                                      sizedBoxWidth(5),
+                                      Text(
+                                        'Filter',
+                                        style: TextStyle(color: primary6),
+                                      ),
+                                    ],
+                                  ),
+                                  style:
+                                      TextButton.styleFrom(primary: primary6),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 15,
+                            left: 15,
+                            right: 15,
+                          ),
+                          child: Text(
+                            "Aktivitas Selesai",
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600),
                             ),
                           ),
-                          Expanded(
-                            child: ListView(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              children: [
-                                buildAktivitasCard(),
-                                buildAktivitasCard(),
-                                buildAktivitasCard(),
-                              ],
-                            ),
-                          )
-                        ]),
-                  ],
-                ),
+                        ),
+                        Expanded(
+                          child: ListView(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            children: [
+                              buildAktivitasCard(),
+                              buildAktivitasCard(),
+                              buildAktivitasCard(),
+                            ],
+                          ),
+                        )
+                      ]),
+                ],
               ),
             )
           ],
@@ -188,7 +186,7 @@ class AktivitasScreen extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: const [
                     Text("Cycling"),
                     Text("07.00 - 08.00 WIB"),
                   ],
@@ -196,7 +194,7 @@ class AktivitasScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Ruangan 1"),
+                    const Text("Ruangan 1"),
                     Expanded(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -209,7 +207,7 @@ class AktivitasScreen extends StatelessWidget {
                           ),
                         ),
                         sizedBoxWidth(5),
-                        Text("Peter"),
+                        const Text("Peter"),
                       ],
                     ))
                   ],

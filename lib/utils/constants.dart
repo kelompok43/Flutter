@@ -76,3 +76,5 @@ Color neutral6 = const Color(0xFF737373);
 Color neutral7 = const Color(0xFF5F5F5F);
 Color neutral8 = const Color(0xFF404040);
 Color neutral9 = const Color(0xFF202020);
+
+const baseUrl = "https://api.gms.mirfanrafif.me/";

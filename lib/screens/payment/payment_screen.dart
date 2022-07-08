@@ -8,8 +8,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key? key}) : super(key: key);
+
+  @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<PaymentViewModel>(context, listen: false)
+        .getPaymentMethod(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,53 +53,84 @@ class PaymentScreen extends StatelessWidget {
               ),
             ),
             sizedBoxHeight(20),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: neutral1,
-              ),
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    height: 82,
-                    width: 62,
-                    child: Image.asset("assets/img/BRI.png"),
+            Consumer<PaymentViewModel>(builder: (context, viewModel, child) {
+              if (viewModel.paymentMethod.isNotEmpty) {
+                var firstMethod = viewModel.paymentMethod.first;
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: neutral1,
                   ),
-                  sizedBoxWidth(125),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "000111222333444",
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          color: neutral8,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      SizedBox(
+                        height: 82,
+                        width: 62,
+                        child: Image.asset("assets/img/BRI.png"),
                       ),
-                      Text(
-                        "a.n Admin Operasional",
-                        style: GoogleFonts.poppins(
-                          fontSize: 10,
-                          color: neutral6,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      Text(
-                        "Fitness Gym",
-                        style: GoogleFonts.poppins(
-                          fontSize: 10,
-                          color: neutral6,
-                          fontWeight: FontWeight.w400,
-                        ),
+                      sizedBoxWidth(125),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            (firstMethod.accNumber ?? 0).toString(),
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              color: neutral8,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            "a.n " + (firstMethod.accName ?? ""),
+                            style: GoogleFonts.poppins(
+                              fontSize: 10,
+                              color: neutral6,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            "Fitness Gym",
+                            style: GoogleFonts.poppins(
+                              fontSize: 10,
+                              color: neutral6,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
                       )
                     ],
-                  )
-                ],
-              ),
-            ),
+                  ),
+                );
+              } else {
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: neutral1,
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Tidak ada metode pembayaran untuk saat ini",
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              color: neutral8,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              }
+            }),
             sizedBoxHeight(20),
             Container(
               decoration: BoxDecoration(

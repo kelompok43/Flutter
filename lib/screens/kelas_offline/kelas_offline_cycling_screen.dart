@@ -37,6 +37,7 @@ class _KelasOfflineCyclingState extends State<KelasOfflineCycling>
 
   @override
   Widget build(BuildContext context) {
+    const String assetImage = "assets/img/cycling.png";
     var date = DateTime.now();
     var dateFormat = DateFormat('EEEE, d MMMM', 'id_ID').format(date);
     return Scaffold(
@@ -84,7 +85,7 @@ class _KelasOfflineCyclingState extends State<KelasOfflineCycling>
                   height: 300,
                   width: MediaQuery.of(context).size.width,
                   child: Image.asset(
-                    "assets/img/cycling.png",
+                    assetImage,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -282,7 +283,7 @@ class _KelasOfflineCyclingState extends State<KelasOfflineCycling>
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  const PesanKelasScreen(),
+                                                  const PesanKelasScreen(assetImage: assetImage,),
                                             ));
                                       },
                                       child: Text(

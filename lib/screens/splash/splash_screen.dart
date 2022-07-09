@@ -1,7 +1,3 @@
-import 'dart:async';
-
-import 'package:fitness_gym/screens/dashboard/dashboard_screen.dart';
-import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -22,24 +18,6 @@ class _SplashScreenState extends State<SplashScreen> {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       Provider.of<SplashViewModel>(context, listen: false).getDataUser(context);
     });
-    // Timer(const Duration(seconds: 1), () async {
-    //   String? data = await getData();
-    //   if (data != null && data.isNotEmpty) {
-    //     Navigator.pushAndRemoveUntil(
-    //         context,
-    //         MaterialPageRoute(
-    //           builder: (context) => const DashboardScreen(),
-    //         ),
-    //         (route) => false);
-    //   } else {
-    //     Navigator.pushAndRemoveUntil(
-    //         context,
-    //         MaterialPageRoute(
-    //           builder: (context) => const WelcomeScreen(),
-    //         ),
-    //         (route) => false);
-    //   }
-    // });
   }
 
   @override

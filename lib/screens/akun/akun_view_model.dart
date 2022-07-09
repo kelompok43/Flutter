@@ -1,3 +1,4 @@
+import 'package:fitness_gym/models/preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -18,8 +19,6 @@ class AkunViewModel extends ChangeNotifier {
     } else {}
     notifyListeners();
   }
-  void namaLengkap(BuildContext context, TextEditingController namaCtrl) {
-    namaCtrl.text;
-    notifyListeners();
-  }
+
+  final user = UserPreferences().getUser();
 }

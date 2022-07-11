@@ -35,23 +35,30 @@ class AkunScreen extends StatelessWidget {
         children: [
           Consumer<AkunViewModel>(
             builder: (context, userViewModel, child) {
-              print(userViewModel.user.picture!);
               return ListTile(
-                leading: CircleAvatar(
+                leading: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30), color: primary5),
                   child: userViewModel.user.picture! != ""
-                      ? Image.network(
-                          userViewModel.user.picture!,
-                          fit: BoxFit.fill,
-                        )
-                      : Text(
-                          userViewModel.user.name![0],
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(60),
+                          child: Image.network(
+                            userViewModel.user.picture!,
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                  backgroundColor: primary5,
+                        )
+                      : Center(
+                        child: Text(
+                            userViewModel.user.name![0],
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                      ),
                 ),
                 title: Text(
                   userViewModel.user.name!,

@@ -42,22 +42,24 @@ class UserApi {
     }
   }
 
-  Future editDetailPrfile(File file, int paymentMethodId, int userId,
-      int totalPrice, String token) async {
+  Future editDetailProfile(File file, String name, String dob, String address,
+      String email, String phone, String token, int userId) async {
     var body = FormData.fromMap({
-      'payment_receipt': await MultipartFile.fromFile(file.path,
+      'picture': await MultipartFile.fromFile(file.path,
           filename: file.path.split('/').last),
-      'user_id': userId,
-      'payment_method_id': paymentMethodId,
-      'total_price': totalPrice,
+      'name': name,
+      'dob': dob,
+      'address': address,
+      'email': email,
+      'phone': phone
     });
 
     var response = await Dio().post(
-      baseUrl + "/transaction",
+      baseUrl + "user/detail/$userId",
       data: body,
       options: Options(
         headers: {
-          'Authorization': 'Bearer ' + token,
+          "authorization": "Bearer $token",
         },
       ),
     );

@@ -3,24 +3,38 @@ import 'package:fitness_gym/screens/akun/akun_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/home/home_screen.dart';
 import 'package:fitness_gym/screens/kelas/kelas_screen.dart';
+import 'package:fitness_gym/screens/splash/splash_view_model.dart';
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:ionicons/ionicons.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
   @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<DashboardViewModel>(context, listen: false)
+        .getDataUser(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var viewModel = Provider.of<DashboardViewModel>(context);
     final _screens = [
       const HomeScreen(),
       const KelasScreen(),
       const AktivitasScreen(),
       const AkunScreen(),
     ];
-    var viewModel = Provider.of<DashboardViewModel>(context);
     int selectIndex = viewModel.selectedIndex;
     return Scaffold(
       body: _screens[viewModel.selectedIndex],

@@ -8,6 +8,7 @@ class UserEntity {
     required this.address,
     required this.gender,
     required this.status,
+    required this.picture,
   });
 
   final int id;
@@ -18,4 +19,5 @@ class UserEntity {
   final String? address;
   final String? gender;
   final String? status;
+  final String? picture;
 }

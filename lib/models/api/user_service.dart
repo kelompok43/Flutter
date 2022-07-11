@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fitness_gym/models/preferences/user_preferences.dart';
 import 'package:fitness_gym/utils/constants.dart';
@@ -28,6 +30,7 @@ class UserApi {
   Future getDataById() async {
     final id = UserPreferences().getUser().id;
     final token = UserPreferences().getToken();
+    print(token);
     final _response = await dio.get(
       baseUrl + "user/$id",
       options: Options(headers: {"authorization": "Bearer $token"}),
@@ -36,6 +39,40 @@ class UserApi {
       return _response.data;
     } else {
       throw Exception("Gagal Fetching Data");
+    }
+  }
+
+  Future editDetailPrfile(File file, int paymentMethodId, int userId,
+      int totalPrice, String token) async {
+    var body = FormData.fromMap({
+      'payment_receipt': await MultipartFile.fromFile(file.path,
+          filename: file.path.split('/').last),
+      'user_id': userId,
+      'payment_method_id': paymentMethodId,
+      'total_price': totalPrice,
+    });
+
+    var response = await Dio().post(
+      baseUrl + "/transaction",
+      data: body,
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer ' + token,
+        },
+      ),
+    );
+
+    return response;
+  }
+
+  Future changePassword(String password) async {
+    final id = UserPreferences().getUser().id;
+    final response = await dio.put(baseUrl + "user/$id/change-password",
+        data: {'password': password});
+    if (response.statusCode == 200) {
+      return response.data;
+    } else {
+      throw Exception("Gagal Ubah Password");
     }
   }
 }

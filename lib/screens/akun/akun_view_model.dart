@@ -21,4 +21,50 @@ class AkunViewModel extends ChangeNotifier {
   }
 
   final user = UserPreferences().getUser();
+  TextEditingController? nameCtrl;
+  Future<TextEditingController> fetchName() async {
+    nameCtrl = TextEditingController(text: user.name! == "" ? "" : user.name!);
+    return nameCtrl!;
+  }
+
+  TextEditingController? tglLahirCtrl;
+  Future<TextEditingController> fetchTanggalLahir() async {
+    tglLahirCtrl =
+        TextEditingController(text: user.dob! == "" ? "" : user.dob!);
+    return tglLahirCtrl!;
+  }
+
+  TextEditingController? alamatCtrl;
+  Future<TextEditingController> fetchAlamat() async {
+    alamatCtrl =
+        TextEditingController(text: user.address! == "" ? "" : user.address!);
+    return alamatCtrl!;
+  }
+
+  TextEditingController? emailCtrl;
+  Future<TextEditingController> fetchEmail() async {
+    emailCtrl =
+        TextEditingController(text: user.email! == "" ? "" : user.email!);
+    return emailCtrl!;
+  }
+
+  TextEditingController? phoneCtrl;
+  Future<TextEditingController> fetchPhone() async {
+    phoneCtrl =
+        TextEditingController(text: user.phone! == "" ? "" : user.phone!);
+    return phoneCtrl!;
+  }
+
+  void fetchData() {
+    fetchPhone();
+    fetchEmail();
+    fetchAlamat();
+    fetchTanggalLahir();
+    fetchName();
+  }
+
+  void changeEmail(TextEditingController email) {
+    emailCtrl = email;
+    notifyListeners();
+  }
 }

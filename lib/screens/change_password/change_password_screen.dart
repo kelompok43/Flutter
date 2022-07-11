@@ -106,67 +106,87 @@ class ChangePasswordScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                content: Text(
-                                  "Apakah anda yakin ingin ubah password ?",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: neutral8,
-                                  )),
-                                ),
-                                alignment: Alignment.center,
-                                actionsAlignment: MainAxisAlignment.center,
-                                actions: [
-                                  SizedBox(
-                                    width: 130,
-                                    child: ElevatedButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        "Ya",
-                                        style: GoogleFonts.poppins(
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
+                              if (newPasswordCtrl.text ==
+                                  confirmNewPasswordCtrl.text) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                    content: Text(
+                                      "Apakah anda yakin ingin ubah password ?",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.poppins(
                                           textStyle: TextStyle(
-                                              color: primary5,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 12),
-                                        ),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.white,
-                                        side: BorderSide(
-                                          width: 1,
-                                          color: primary5,
-                                        ),
-                                      ),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: neutral8,
+                                      )),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 130,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        "Batal",
-                                        style: GoogleFonts.poppins(
-                                          textStyle: const TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
+                                    alignment: Alignment.center,
+                                    actionsAlignment: MainAxisAlignment.center,
+                                    actions: [
+                                      SizedBox(
+                                        width: 130,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            value.changePassword(
+                                                newPasswordCtrl.text, context);
+                                          },
+                                          child: Text(
+                                            "Ya",
+                                            style: GoogleFonts.poppins(
+                                              textStyle: TextStyle(
+                                                  color: primary5,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 12),
+                                            ),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors.white,
+                                            side: BorderSide(
+                                              width: 1,
+                                              color: primary5,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      style: ElevatedButton.styleFrom(
-                                          primary: primary4),
-                                    ),
+                                      SizedBox(
+                                        width: 130,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "Batal",
+                                            style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                              primary: primary4),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            );
+                                );
+                              } else {
+                                SnackBar snackBar = SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  backgroundColor: primary5,
+                                  duration: const Duration(seconds: 2),
+                                  content:
+                                      const Text('Confirm Password Tidak Sama'),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              }
+                            }
                           },
                           child: Text(
                             "UBAH PASSWORD",

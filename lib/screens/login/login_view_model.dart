@@ -32,7 +32,8 @@ class LoginViewModel extends ChangeNotifier {
           phone: response.data?.phone ?? "",
           address: response.data?.address ?? "",
           gender: response.data?.gender ?? "",
-          status: response.data?.status ?? ""));
+          status: response.data?.status ?? "",
+          picture: response.data?.picture ?? ""));
 
       UserPreferences().setToken(response.token ?? "");
 

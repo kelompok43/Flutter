@@ -31,6 +31,7 @@ class UserResponse {
     required this.address,
     required this.gender,
     required this.status,
+    required this.picture,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -43,6 +44,7 @@ class UserResponse {
   final String? address;
   final String? gender;
   final String? status;
+  final String? picture;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -56,6 +58,7 @@ class UserResponse {
       address: json["address"],
       gender: json["gender"],
       status: json["status"],
+      picture: json["picture"],
       createdAt: json["created_at"] == null
           ? null
           : DateTime.parse(json["created_at"]),

@@ -34,54 +34,60 @@ class AkunScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Consumer<AkunViewModel>(
-            builder: (context, userViewModel, child) => ListTile(
-              leading: CircleAvatar(
-                child: userViewModel.user.phone! == ""
-                    ? Text(
-                        userViewModel.user.name![0],
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
+            builder: (context, userViewModel, child) {
+              print(userViewModel.user.picture!);
+              return ListTile(
+                leading: CircleAvatar(
+                  child: userViewModel.user.picture! != ""
+                      ? Image.network(
+                          userViewModel.user.picture!,
+                          fit: BoxFit.fill,
+                        )
+                      : Text(
+                          userViewModel.user.name![0],
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
                         ),
-                      )
-                    : SizedBox(),
-                backgroundColor: primary5,
-              ),
-              title: Text(
-                userViewModel.user.name!,
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: neutral9,
+                  backgroundColor: primary5,
+                ),
+                title: Text(
+                  userViewModel.user.name!,
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: neutral9,
+                    ),
                   ),
                 ),
-              ),
-              subtitle: Text(
-                userViewModel.user.phone!,
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: neutral7,
+                subtitle: Text(
+                  userViewModel.user.phone!,
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: neutral7,
+                    ),
                   ),
                 ),
-              ),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditAkunScreen(),
-                      ));
-                },
-                icon: Icon(
-                  Icons.mode_edit_outlined,
-                  color: primary4,
+                trailing: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EditAkunScreen(),
+                        ));
+                  },
+                  icon: Icon(
+                    Icons.mode_edit_outlined,
+                    color: primary4,
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
           Divider(
             height: 0,

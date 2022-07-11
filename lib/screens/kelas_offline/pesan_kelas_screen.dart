@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class PesanKelasScreen extends StatelessWidget {
-  const PesanKelasScreen({Key? key}) : super(key: key);
+  const PesanKelasScreen({Key? key, required this.assetImage}) : super(key: key);
+  final String assetImage;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class PesanKelasScreen extends StatelessWidget {
             Container(
               height: 300,
               width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/img/cycling.png"),
+                  image: AssetImage(assetImage),
                   fit: BoxFit.cover,
                 ),
               ),

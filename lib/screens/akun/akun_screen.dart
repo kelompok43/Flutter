@@ -1,3 +1,4 @@
+import 'package:fitness_gym/screens/akun/akun_view_model.dart';
 import 'package:fitness_gym/screens/akun/membership_screen.dart';
 import 'package:fitness_gym/screens/change_password/change_password_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
@@ -32,43 +33,61 @@ class AkunScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            leading: CircleAvatar(
-              backgroundColor: primary5,
-            ),
-            title: Text(
-              "Ulil Ambri",
-              style: GoogleFonts.poppins(
-                textStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: neutral9,
+          Consumer<AkunViewModel>(
+            builder: (context, userViewModel, child) {
+              print(userViewModel.user.picture!);
+              return ListTile(
+                leading: CircleAvatar(
+                  child: userViewModel.user.picture! != ""
+                      ? Image.network(
+                          userViewModel.user.picture!,
+                          fit: BoxFit.fill,
+                        )
+                      : Text(
+                          userViewModel.user.name![0],
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                  backgroundColor: primary5,
                 ),
-              ),
-            ),
-            subtitle: Text(
-              "+628123456789",
-              style: GoogleFonts.poppins(
-                textStyle: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: neutral7,
+                title: Text(
+                  userViewModel.user.name!,
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: neutral9,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            trailing: IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EditAkunScreen(),
-                    ));
-              },
-              icon: Icon(
-                Icons.mode_edit_outlined,
-                color: primary4,
-              ),
-            ),
+                subtitle: Text(
+                  userViewModel.user.phone!,
+                  style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: neutral7,
+                    ),
+                  ),
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EditAkunScreen(),
+                        ));
+                  },
+                  icon: Icon(
+                    Icons.mode_edit_outlined,
+                    color: primary4,
+                  ),
+                ),
+              );
+            },
           ),
           Divider(
             height: 0,

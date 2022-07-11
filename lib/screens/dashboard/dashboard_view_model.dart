@@ -1,3 +1,4 @@
+import 'package:fitness_gym/models/preferences/user_preferences.dart';
 import 'package:fitness_gym/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,9 +11,8 @@ class DashboardViewModel extends ChangeNotifier {
     notifyListeners();
   }
   void logout(BuildContext context) async {
+    UserPreferences().logout();
     _selectedIndex = 0;
-    var sharedPref = await SharedPreferences.getInstance();
-    await sharedPref.remove("token");
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(

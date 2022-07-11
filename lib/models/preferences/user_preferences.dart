@@ -13,19 +13,20 @@ class UserPreferences {
   final _address = "address";
   final _jwtToken = "jwt_token";
   final _status = "status";
+  final _picture = "picture";
   var preferences = BasePreferences.preferences;
 
   UserEntity getUser() {
     var user = UserEntity(
-      id: preferences.getInt(_id) ?? 0,
-      name: preferences.getString(_name) ?? "",
-      dob: preferences.getString(_dob) ?? "",
-      email: preferences.getString(_email) ?? "",
-      phone: preferences.getString(_phone) ?? "",
-      address: preferences.getString(_address) ?? "",
-      gender: preferences.getString(_gender),
-      status: preferences.getString(_status) ?? "",
-    );
+        id: preferences.getInt(_id) ?? 0,
+        name: preferences.getString(_name) ?? "",
+        dob: preferences.getString(_dob) ?? "",
+        email: preferences.getString(_email) ?? "",
+        phone: preferences.getString(_phone) ?? "",
+        address: preferences.getString(_address) ?? "",
+        gender: preferences.getString(_gender),
+        status: preferences.getString(_status) ?? "",
+        picture: preferences.getString(_picture) ?? "");
     return user;
   }
 
@@ -38,6 +39,7 @@ class UserPreferences {
     preferences.setString(_address, user.address ?? "");
     preferences.setString(_gender, user.gender ?? "");
     preferences.setString(_status, user.status ?? "");
+    preferences.setString(_picture, user.picture ?? "");
   }
 
   String? getToken() {

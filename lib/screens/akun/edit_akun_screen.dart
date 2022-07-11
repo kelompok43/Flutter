@@ -8,97 +8,13 @@ import 'package:iconify_flutter/icons/heroicons_solid.dart';
 import 'package:iconify_flutter/icons/typcn.dart';
 import 'package:provider/provider.dart';
 
-// class EditAkunScreen extends StatelessWidget {
-//   const EditAkunScreen({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final _formKey = GlobalKey<FormState>();
-//     TextEditingController tglLahirCtrl = TextEditingController();
-//     TextEditingController namaCtrl = TextEditingController();
-//     TextEditingController alamatCtrl = TextEditingController();
-//     TextEditingController emailCtrl = TextEditingController();
-//     TextEditingController noTelpCtrl = TextEditingController();
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: neutral9,
-//         title: Text(
-//           "Ubah Akun",
-//           style: GoogleFonts.poppins(
-//             fontSize: 16,
-//             fontWeight: FontWeight.w600,
-//           ),
-//         ),
-//       ),
-//       body: Container(
-//         padding: const EdgeInsets.symmetric(horizontal: 16),
-//         child: SingleChildScrollView(
-//           child: Form(
-//             key: _formKey,
-//             child: Column(
-//               cros
-//               children: [
-//                 sizedBoxHeight(30),
-//                 Center(
-//                   child: Stack(
-//                     children: [
-//                       Container(
-//                         height: 100,
-//                         width: 100,
-//                         decoration: BoxDecoration(
-//                           color: primary1,
-//                           shape: BoxShape.circle,
-//                         ),
-//                         child: Icon(
-//                           Icons.person_outline_rounded,
-//                           color: primary4,
-//                           size: 50,
-//                         ),
-//                       ),
-//                       GestureDetector(
-//                         onTap: () {},
-//                         child: Container(
-//                             width: 30,
-//                             height: 30,
-//                             margin: const EdgeInsets.only(left: 70, top: 70),
-//                             padding: const EdgeInsets.all(5),
-//                             decoration: BoxDecoration(
-//                               color: primary5,
-//                               shape: BoxShape.circle,
-//                             ),
-//                             child: const Iconify(
-//                               Typcn.camera_outline,
-//                               color: Colors.white,
-//                             )),
-//                       )
-//                     ],
-//                   ),
-//                 ),
-//                 sizedBoxHeight(30),
-//                 Text("Nama Lengkap"),
-//                 sizedBoxHeight(5),
-//                 TextField(
-//                   controller: namaCtrl,
-//                 )
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 class EditAkunScreen extends StatelessWidget {
   const EditAkunScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final tglLahirCtrl = TextEditingController();
     final _formKey = GlobalKey<FormState>();
-    final namaCtrl = TextEditingController();
-    final alamatCtrl = TextEditingController();
-    final emailCtrl = TextEditingController();
-    final noTelpCtrl = TextEditingController();
+    Provider.of<AkunViewModel>(context, listen: false).fetchData();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -169,7 +85,12 @@ class EditAkunScreen extends StatelessWidget {
                   ),
                   sizedBoxHeight(5),
                   TextFormField(
-                    controller: namaCtrl,
+                    controller: value.nameCtrl,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: neutral9,
+                    ),
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(10),
                       focusedBorder: OutlineInputBorder(
@@ -188,6 +109,12 @@ class EditAkunScreen extends StatelessWidget {
                         color: const Color(0xFF5f5f5f),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Nama Harus Diisi";
+                      }
+                      return null;
+                    },
                   ),
                   sizedBoxHeight(30),
                   Text(
@@ -200,9 +127,14 @@ class EditAkunScreen extends StatelessWidget {
                   ),
                   sizedBoxHeight(5),
                   TextFormField(
-                    onTap: () => value.datePicker(context, tglLahirCtrl),
+                    onTap: () => value.datePicker(context, value.tglLahirCtrl!),
                     readOnly: true,
-                    controller: tglLahirCtrl,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: neutral9,
+                    ),
+                    controller: value.tglLahirCtrl,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(10),
                       focusedBorder: OutlineInputBorder(
@@ -221,6 +153,12 @@ class EditAkunScreen extends StatelessWidget {
                         color: const Color(0xFF5f5f5f),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Tanggal Lahir Harus Diisi";
+                      }
+                      return null;
+                    },
                   ),
                   sizedBoxHeight(30),
                   Text(
@@ -233,7 +171,12 @@ class EditAkunScreen extends StatelessWidget {
                   ),
                   sizedBoxHeight(5),
                   TextFormField(
-                    controller: alamatCtrl,
+                    controller: value.alamatCtrl,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: neutral9,
+                    ),
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(10),
                       focusedBorder: OutlineInputBorder(
@@ -245,13 +188,19 @@ class EditAkunScreen extends StatelessWidget {
                           color: primary3,
                         ),
                       ),
-                      hintText: "-",
+                      hintText: "Alamat",
                       hintStyle: GoogleFonts.poppins(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF5f5f5f),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Alamat Harus Diisi";
+                      }
+                      return null;
+                    },
                   ),
                   sizedBoxHeight(30),
                   Card(
@@ -265,7 +214,7 @@ class EditAkunScreen extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        "ulilambri9888@gmail.com",
+                        value.emailCtrl!.text,
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -321,7 +270,12 @@ class EditAkunScreen extends StatelessWidget {
                                         ),
                                         sizedBoxHeight(5),
                                         TextFormField(
-                                          controller: emailCtrl,
+                                          controller: value.emailCtrl,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: neutral9,
+                                          ),
                                           decoration: InputDecoration(
                                             contentPadding:
                                                 const EdgeInsets.all(10),
@@ -334,7 +288,7 @@ class EditAkunScreen extends StatelessWidget {
                                                 color: primary3,
                                               ),
                                             ),
-                                            hintText: "user@gmail.com",
+                                            hintText: value.user.email,
                                             hintStyle: GoogleFonts.poppins(
                                               fontSize: 12,
                                               fontWeight: FontWeight.w600,
@@ -348,7 +302,11 @@ class EditAkunScreen extends StatelessWidget {
                                               MediaQuery.of(context).size.width,
                                           height: 45,
                                           child: ElevatedButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              value.changeEmail(
+                                                  value.emailCtrl!);
+                                              Navigator.pop(context);
+                                            },
                                             child: Text(
                                               "Simpan",
                                               style: GoogleFonts.poppins(
@@ -387,7 +345,7 @@ class EditAkunScreen extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        "-",
+                        value.phoneCtrl!.text,
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -442,7 +400,12 @@ class EditAkunScreen extends StatelessWidget {
                                         ),
                                         sizedBoxHeight(5),
                                         TextFormField(
-                                          controller: noTelpCtrl,
+                                          controller: value.phoneCtrl,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w600,
+                                            color: neutral9,
+                                          ),
                                           decoration: InputDecoration(
                                             contentPadding:
                                                 const EdgeInsets.all(10),

@@ -18,7 +18,7 @@ class AkunViewModel extends ChangeNotifier {
   TextEditingController? alamatCtrl;
   TextEditingController? emailCtrl;
   TextEditingController? phoneCtrl;
-  var addDetailState = AddDetailUserState.initial;
+
   void datePicker(
       BuildContext context, TextEditingController tglLahirCtrl) async {
     DateTime? pickedDate = await showDatePicker(
@@ -94,7 +94,7 @@ class AkunViewModel extends ChangeNotifier {
       String email, String password, BuildContext context) async {
     try {
       await UserApi().postLogin(email, password);
-      addDetailState = AddDetailUserState.loading;
+      // addDetailState = AddDetailUserState.loading;
       notifyListeners();
       //Jika tidak ada foto
       if (_imagePath == null) {
@@ -106,7 +106,7 @@ class AkunViewModel extends ChangeNotifier {
           content: const Text('Belum mengambil foto bukti'),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        addDetailState = AddDetailUserState.initial;
+
         notifyListeners();
         return;
       }
@@ -114,7 +114,7 @@ class AkunViewModel extends ChangeNotifier {
       var userId = UserPreferences().getUser().id;
       var token = UserPreferences().getToken();
       try {
-        var response = await UserApi().editDetailProfile(
+        await UserApi().editDetailProfile(
             imagePath!,
             nameCtrl!.text,
             tglLahirCtrl!.text,
@@ -123,6 +123,13 @@ class AkunViewModel extends ChangeNotifier {
             phoneCtrl!.text,
             token!,
             userId);
+        SnackBar snackBar = SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: primary5,
+          duration: const Duration(seconds: 2),
+          content: const Text('Menambahkan Profile User Berhasil'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } on DioError catch (e) {
         if (e.response != null) {
           var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
@@ -143,7 +150,7 @@ class AkunViewModel extends ChangeNotifier {
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
-        addDetailState = AddDetailUserState.initial;
+
         notifyListeners();
       }
       Navigator.pushAndRemoveUntil(
@@ -152,8 +159,8 @@ class AkunViewModel extends ChangeNotifier {
             builder: (context) => const DashboardScreen(),
           ),
           (route) => false);
-          addDetailState = AddDetailUserState.initial;
-          notifyListeners();
+
+      notifyListeners();
     } on DioError catch (e) {
       if (e.response?.data != null) {
         var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
@@ -168,9 +175,4 @@ class AkunViewModel extends ChangeNotifier {
       }
     }
   }
-}
-
-enum AddDetailUserState {
-  initial,
-  loading,
 }

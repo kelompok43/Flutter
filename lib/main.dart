@@ -3,6 +3,7 @@ import 'package:fitness_gym/models/preferences/base_preferences.dart';
 import 'package:fitness_gym/screens/akun/akun_view_model.dart';
 import 'package:fitness_gym/screens/change_password/change_password_view_model.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
+import 'package:fitness_gym/screens/home/home_view_model.dart';
 import 'package:fitness_gym/screens/login/login_view_model.dart';
 import 'package:fitness_gym/screens/payment/payment_view_model.dart';
 import 'package:fitness_gym/screens/register/register_view_model.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => SplashViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => HomeViewModel(),
         ),
       ],
       child: MaterialApp(

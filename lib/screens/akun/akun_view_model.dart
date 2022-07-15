@@ -103,7 +103,7 @@ class AkunViewModel extends ChangeNotifier {
           behavior: SnackBarBehavior.floating,
           backgroundColor: primary5,
           duration: const Duration(seconds: 2),
-          content: const Text('Belum mengambil foto bukti'),
+          content: const Text('Belum mengambil foto'),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
         addDetailState = AddDetailUserState.initial;
@@ -152,8 +152,8 @@ class AkunViewModel extends ChangeNotifier {
             builder: (context) => const DashboardScreen(),
           ),
           (route) => false);
-          addDetailState = AddDetailUserState.initial;
-          notifyListeners();
+      addDetailState = AddDetailUserState.initial;
+      notifyListeners();
     } on DioError catch (e) {
       if (e.response?.data != null) {
         var errorResponse = ApiErrorResponse.fromJson(e.response!.data);

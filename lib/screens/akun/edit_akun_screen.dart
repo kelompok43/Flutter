@@ -674,7 +674,18 @@ class _EditAkunScreenState extends State<EditAkunScreen> {
 
   Future<void> takePicture() async {
     final cameras = await availableCameras();
+    if (cameras.isEmpty) {
+      SnackBar snackBar = SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: primary5,
+        duration: const Duration(seconds: 2),
+        content: const Text('Tidak ada kamera di perangkat ini'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      return;
+    }
     final firstCamera = cameras.first;
+
     var picture = await Navigator.push<XFile>(
         context,
         MaterialPageRoute(

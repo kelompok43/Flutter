@@ -30,7 +30,7 @@ class UserApi {
   Future getDataById() async {
     final id = UserPreferences().getUser().id;
     final token = UserPreferences().getToken();
-    print(token);
+
     final _response = await dio.get(
       baseUrl + "user/$id",
       options: Options(headers: {"authorization": "Bearer $token"}),

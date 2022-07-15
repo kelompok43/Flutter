@@ -15,9 +15,20 @@ import 'package:provider/provider.dart';
 
 import 'home_view_model.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<HomeViewModel>(context,listen: false).getData();
+  }
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<DashboardViewModel>(context);
@@ -142,14 +153,16 @@ class HomeScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  const SizedBox(
-                                    height: 24,
-                                    width: 30,
-                                    child: Iconify(
-                                      FaSolid.crown,
-                                      color: Color(0xFF806A00),
-                                    ),
-                                  ),
+                                  homeViewModel.user.status! == ""
+                                      ? const SizedBox()
+                                      : const SizedBox(
+                                          height: 24,
+                                          width: 30,
+                                          child: Iconify(
+                                            FaSolid.crown,
+                                            color: Color(0xFF806A00),
+                                          ),
+                                        ),
                                   Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,

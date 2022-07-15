@@ -2,12 +2,14 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fitness_gym/models/api/user_service.dart';
+import 'package:fitness_gym/models/entities/user_entity.dart';
 import 'package:fitness_gym/models/preferences/user_preferences.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../models/responses/api_error_response.dart';
+import '../../models/responses/login_response.dart';
 import '../../utils/constants.dart';
 
 class AkunViewModel extends ChangeNotifier {
@@ -36,7 +38,7 @@ class AkunViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  final user = UserPreferences().getUser();
+  var user = UserPreferences().getUser();
 
   Future<TextEditingController> fetchName() async {
     nameCtrl = TextEditingController(text: user.name! == "" ? "" : user.name!);
@@ -90,88 +92,79 @@ class AkunViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void getData() {
+    user = UserPreferences().getUser();
+  }
+
   void addDetailUser(
       String email, String password, BuildContext context) async {
     try {
       await UserApi().postLogin(email, password);
-      // addDetailState = AddDetailUserState.loading;
-      notifyListeners();
-      //Jika tidak ada foto
       if (_imagePath == null) {
         Navigator.pop(context);
         SnackBar snackBar = SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: primary5,
           duration: const Duration(seconds: 2),
-          content: const Text('Belum mengambil foto bukti'),
+          content: const Text('Foto Belum Diambil'),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
         notifyListeners();
         return;
       }
-
       var userId = UserPreferences().getUser().id;
+
       var token = UserPreferences().getToken();
       try {
-        await UserApi().editDetailProfile(
-            imagePath!,
+        Map<String, dynamic> editProfile = await UserApi().editDetailProfile(
+            _imagePath!,
             nameCtrl!.text,
             tglLahirCtrl!.text,
             alamatCtrl!.text,
             emailCtrl!.text,
             phoneCtrl!.text,
-            token!,
+            token ?? "",
             userId);
+        var response = LoginResponse.fromJson(editProfile);
+
+        UserPreferences().setUser(UserEntity(
+            id: response.data?.id ?? 0,
+            name: response.data?.name ?? "",
+            dob: response.data?.dob ?? "",
+            email: response.data?.email ?? "",
+            phone: response.data?.phone ?? "",
+            address: response.data?.address ?? "",
+            gender: response.data?.gender ?? "",
+            status: response.data?.status ?? "",
+            picture: response.data?.picture ?? ""));
         SnackBar snackBar = SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: primary5,
           duration: const Duration(seconds: 2),
-          content: const Text('Menambahkan Profile User Berhasil'),
+          content: const Text('Edit Profile Berhasil'),
         );
+        var user = UserPreferences().getUser();
+        print(user.dob);
+        print(user.address);
+        print(user.email);
+        print(user.phone);
+        print(user.picture);
+        _imagePath!.delete();
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const DashboardScreen(),
+            ),
+            (route) => false);
       } on DioError catch (e) {
-        if (e.response != null) {
-          var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
-          SnackBar snackBar = SnackBar(
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: primary5,
-            duration: const Duration(seconds: 2),
-            content: Text('Gagal Menambahbakan Detail User ' +
-                (errorResponse.message ?? "")),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        } else {
-          SnackBar snackBar = SnackBar(
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: primary5,
-            duration: const Duration(seconds: 2),
-            content: const Text('Gagal Menambahbakan Detail User'),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        if (e.response?.statusCode != 200) {
+          print(e);
         }
-
-        notifyListeners();
       }
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const DashboardScreen(),
-          ),
-          (route) => false);
-
-      notifyListeners();
     } on DioError catch (e) {
-      if (e.response?.data != null) {
-        var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
-        SnackBar snackBar = SnackBar(
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: primary5,
-          duration: const Duration(seconds: 2),
-          content: Text(errorResponse.message ?? ""),
-        );
-        Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      if (e.response!.statusCode != 200) {
+        print(e);
       }
     }
   }

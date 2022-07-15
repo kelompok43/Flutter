@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -35,6 +36,16 @@ class ChangePasswordViewModel extends ChangeNotifier {
           ));
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    } catch (e) {}
+    } on DioError catch (e) {
+      if (e.response!.statusCode != 200) {
+        SnackBar snackBar = SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: primary5,
+          duration: const Duration(seconds: 2),
+          content: const Text("Ubah Password Gagal"),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    }
   }
 }

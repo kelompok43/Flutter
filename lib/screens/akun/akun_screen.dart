@@ -1,5 +1,5 @@
 import 'package:fitness_gym/screens/akun/akun_view_model.dart';
-import 'package:fitness_gym/screens/akun/membership_screen.dart';
+import 'package:fitness_gym/screens/membership/membership_screen.dart';
 import 'package:fitness_gym/screens/change_password/change_password_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/terms_n_conditions/terms_n_conditions.dart';
@@ -11,8 +11,20 @@ import 'package:provider/provider.dart';
 
 import 'edit_akun_screen.dart';
 
-class AkunScreen extends StatelessWidget {
+class AkunScreen extends StatefulWidget {
   const AkunScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AkunScreen> createState() => _AkunScreenState();
+}
+
+class _AkunScreenState extends State<AkunScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<AkunViewModel>(context, listen: false).getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +47,30 @@ class AkunScreen extends StatelessWidget {
         children: [
           Consumer<AkunViewModel>(
             builder: (context, userViewModel, child) {
-              print(userViewModel.user.picture!);
               return ListTile(
-                leading: CircleAvatar(
+                leading: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30), color: primary5),
                   child: userViewModel.user.picture! != ""
-                      ? Image.network(
-                          userViewModel.user.picture!,
-                          fit: BoxFit.fill,
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(60),
+                          child: Image.network(
+                            userViewModel.user.picture!,
+                            fit: BoxFit.cover,
+                          ),
                         )
-                      : Text(
-                          userViewModel.user.name![0],
-                          style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
+                      : Center(
+                          child: Text(
+                            userViewModel.user.name![0],
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                  backgroundColor: primary5,
                 ),
                 title: Text(
                   userViewModel.user.name!,

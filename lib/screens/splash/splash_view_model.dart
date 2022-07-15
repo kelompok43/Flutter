@@ -40,8 +40,6 @@ class SplashViewModel extends ChangeNotifier {
             ),
             (route) => false);
       }
-    } catch (e) {
-      print(e);
     }
   }
 }

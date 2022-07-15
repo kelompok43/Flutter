@@ -41,7 +41,9 @@ class _CameraScreenState extends State<CameraScreen> {
             return Stack(
               children: [
                 SizedBox(
-                  height: double.infinity,
+                  width: MediaQuery.of(context).size.width,
+                  height: double.infinity/
+                      _controller.value.aspectRatio,
                   child: CameraPreview(_controller),
                 ),
                 Positioned(

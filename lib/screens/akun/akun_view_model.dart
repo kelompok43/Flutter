@@ -178,25 +178,6 @@ class AkunViewModel extends ChangeNotifier {
       notifyListeners();
     } on DioError catch (e) {
       if (e.response?.data != null) {
-        var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
-
-        var user = UserPreferences().getUser();
-        print(user.dob);
-        print(user.address);
-        print(user.email);
-        print(user.phone);
-        print(user.picture);
-        _imagePath!.delete();
-
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const DashboardScreen(),
-            ),
-            (route) => false);
-      }
-    } on DioError catch (e) {
-      if (e.response!.statusCode != 200) {
         print(e);
       }
     }

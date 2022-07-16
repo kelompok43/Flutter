@@ -125,6 +125,40 @@ class AkunViewModel extends ChangeNotifier {
             phoneCtrl!.text,
             token ?? "",
             userId);
+      } on DioError catch (e) {
+        if (e.response != null) {
+          var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
+          SnackBar snackBar = SnackBar(
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: primary5,
+            duration: const Duration(seconds: 2),
+            content: Text('Gagal Menambahbakan Detail User ' +
+                (errorResponse.message ?? "")),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        } else {
+          SnackBar snackBar = SnackBar(
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: primary5,
+            duration: const Duration(seconds: 2),
+            content: const Text('Gagal Menambahbakan Detail User'),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+        addDetailState = AddDetailUserState.initial;
+        notifyListeners();
+      }
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DashboardScreen(),
+          ),
+          (route) => false);
+      addDetailState = AddDetailUserState.initial;
+      notifyListeners();
+    } on DioError catch (e) {
+      if (e.response?.data != null) {
+        var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
         var response = LoginResponse.fromJson(editProfile);
 
         UserPreferences().setUser(UserEntity(
@@ -137,6 +171,7 @@ class AkunViewModel extends ChangeNotifier {
             gender: response.data?.gender ?? "",
             status: response.data?.status ?? "",
             picture: response.data?.picture ?? ""));
+            
         SnackBar snackBar = SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: primary5,

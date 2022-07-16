@@ -131,403 +131,142 @@ class _KelasCardioState extends State<KelasCardio>
                 controller: _tabController,
                 children: myTabs.map((Tab tab) {
                   // final String? label = tab.text?.toLowerCase();
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 30),
-                    child: Column(
-                      // padding: const EdgeInsets.symmetric(
-                      //     horizontal: 16, vertical: 30),
-                      children: [
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          elevation: 20,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 10,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(dateFormat),
-                                    SizedBox(
-                                      height: 30,
-                                      width: 127,
-                                      child: ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text(
-                                          "Kelas Penuh",
-                                          style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              color: primary5,
-                                            ),
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                            primary: const Color(0xFFFFF3E2)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "07.00 - 08.00",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: neutral6,
-                                  )),
-                                ),
-                                sizedBoxHeight(16.5),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Kelas Cardio",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                        fontSize: 14,
-                                        color: neutral9,
-                                        fontWeight: FontWeight.w600,
-                                      )),
-                                    ),
-                                    Text(
-                                      "Ruangan 1",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: neutral9,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                sizedBoxHeight(10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: SizedBox(
-                                          height: 20,
-                                          width: 20,
-                                          child: Image.asset(
-                                              "assets/img/img.png")),
-                                    ),
-                                    sizedBoxWidth(5),
-                                    Text(
-                                      "Peter",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                        color: neutral5,
-                                      )),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "Tidak Bisa Memesan",
-                                            style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600,
-                                                color: neutral5,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          elevation: 20,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 10,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(dateFormat),
-                                    SizedBox(
-                                      height: 30,
-                                      width: 127,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //       builder: (context) =>
-                                          //           const PesanKelasScreen(),
-                                          //     ));
-                                        },
-                                        child: Text(
-                                          "Pesan",
-                                          style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              color: info7,
-                                            ),
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: info1,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "07.00 - 08.00",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: neutral6,
-                                  )),
-                                ),
-                                sizedBoxHeight(16.5),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Kelas Cardio",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                        fontSize: 14,
-                                        color: neutral9,
-                                        fontWeight: FontWeight.w600,
-                                      )),
-                                    ),
-                                    Text(
-                                      "Ruangan 1",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: neutral9,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                sizedBoxHeight(10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: SizedBox(
-                                          height: 20,
-                                          width: 20,
-                                          child: Image.asset(
-                                              "assets/img/img.png")),
-                                    ),
-                                    sizedBoxWidth(5),
-                                    Text(
-                                      "Peter",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                        color: neutral5,
-                                      )),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "17/30",
-                                            style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600,
-                                                color: neutral5,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          elevation: 20,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 10,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(dateFormat),
-                                    SizedBox(
-                                      height: 30,
-                                      width: 127,
-                                      child: ElevatedButton(
-                                        onPressed: () {},
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SizedBox(
-                                                width: 20,
-                                                height: 18,
-                                                child: SvgPicture.asset(
-                                                    "assets/icons/crown.svg")),
-                                            Text(
-                                              "Upgrade",
-                                              style: GoogleFonts.poppins(
-                                                  textStyle: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xFF806A00),
-                                              )),
-                                            )
-                                          ],
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                          primary: const Color(0xFFFFFADF),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "07.00 - 08.00",
-                                  style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: neutral6,
-                                  )),
-                                ),
-                                sizedBoxHeight(16.5),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Kelas Cardio",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                        fontSize: 14,
-                                        color: neutral9,
-                                        fontWeight: FontWeight.w600,
-                                      )),
-                                    ),
-                                    Text(
-                                      "Ruangan 1",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: neutral9,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                sizedBoxHeight(10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(30),
-                                      child: SizedBox(
-                                          height: 20,
-                                          width: 20,
-                                          child: Image.asset(
-                                              "assets/img/img.png")),
-                                    ),
-                                    sizedBoxWidth(5),
-                                    Text(
-                                      "Peter",
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                        color: neutral5,
-                                      )),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            "17/30",
-                                            style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w600,
-                                                color: neutral5,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                  return ListView.separated(
+                    itemBuilder: (context, index) => buildClassCard(dateFormat),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 30,
                     ),
+                    itemCount: 10,
                   );
                 }).toList(),
               ),
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Widget buildClassCard(String dateFormat) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: DecoratedBox(
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+              color: Color.fromARGB(25, 0, 0, 0),
+              blurRadius: 20,
+              spreadRadius: 1)
+        ], color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(dateFormat),
+                  SizedBox(
+                    height: 30,
+                    width: 127,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Kelas Penuh",
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: primary5,
+                          ),
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xFFFFF3E2)),
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                "07.00 - 08.00",
+                style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: neutral6,
+                )),
+              ),
+              sizedBoxHeight(16.5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Kelas Cardio",
+                    style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                      fontSize: 14,
+                      color: neutral9,
+                      fontWeight: FontWeight.w600,
+                    )),
+                  ),
+                  Text(
+                    "Ruangan 1",
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                        fontSize: 14,
+                        color: neutral9,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              sizedBoxHeight(10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: Image.asset("assets/img/img.png")),
+                  ),
+                  sizedBoxWidth(5),
+                  Text(
+                    "Peter",
+                    style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: neutral5,
+                    )),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Tidak Bisa Memesan",
+                          style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: neutral5,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

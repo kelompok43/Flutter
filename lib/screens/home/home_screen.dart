@@ -27,8 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<HomeViewModel>(context,listen: false).getData();
+    Provider.of<HomeViewModel>(context, listen: false).getData();
   }
+
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<DashboardViewModel>(context);
@@ -134,66 +135,71 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PaymentScreen(),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 12),
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFFFFEED0),
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  homeViewModel.user.status! == ""
-                                      ? const SizedBox()
-                                      : const SizedBox(
-                                          height: 24,
-                                          width: 30,
-                                          child: Iconify(
-                                            FaSolid.crown,
-                                            color: Color(0xFF806A00),
-                                          ),
-                                        ),
-                                  Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                          homeViewModel.user.status! == "Bukan Member"
+                              ? GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const PaymentScreen(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 12),
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xFFFFEED0),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text(
-                                          "Menjadi Anggota di Fitness Gym",
-                                          style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                                color: Color(0xFF806A00),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                        Text(
-                                          "& buka pengalaman penuh",
-                                          style: GoogleFonts.poppins(
-                                            textStyle: const TextStyle(
-                                                color: Color(0xFF806A00),
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14),
-                                          ),
-                                        ),
-                                      ]),
-                                  const Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color(0xFF806A00),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                                        homeViewModel.user.status! == ""
+                                            ? const SizedBox()
+                                            : const SizedBox(
+                                                height: 24,
+                                                width: 30,
+                                                child: Iconify(
+                                                  FaSolid.crown,
+                                                  color: Color(0xFF806A00),
+                                                ),
+                                              ),
+                                        Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Menjadi Anggota di Fitness Gym",
+                                                style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      color: Color(0xFF806A00),
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                              Text(
+                                                "& buka pengalaman penuh",
+                                                style: GoogleFonts.poppins(
+                                                  textStyle: const TextStyle(
+                                                      color: Color(0xFF806A00),
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                            ]),
+                                        const Icon(
+                                          Icons.arrow_forward_ios,
+                                          color: Color(0xFF806A00),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

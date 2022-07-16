@@ -165,61 +165,66 @@ class MembershipScreen extends StatelessWidget {
                         ],
                       ),
                       sizedBoxHeight(54),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const PaymentScreen(),
-                              ));
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 12),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFFFEED0),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const SizedBox(
-                                height: 24,
-                                width: 30,
-                                child: Iconify(
-                                  FaSolid.crown,
-                                  color: Color(0xFF806A00),
+                      memberViewModel.user.status! == "Bukan Member"
+                          ? GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PaymentScreen(),
+                                    ));
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 12),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFFFEED0),
+                                    borderRadius: BorderRadius.circular(5)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const SizedBox(
+                                      height: 24,
+                                      width: 30,
+                                      child: Iconify(
+                                        FaSolid.crown,
+                                        color: Color(0xFF806A00),
+                                      ),
+                                    ),
+                                    Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Menjadi Anggota di Fitness Gym",
+                                            style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  color: Color(0xFF806A00),
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14),
+                                            ),
+                                          ),
+                                          Text(
+                                            "& buka pengalaman penuh",
+                                            style: GoogleFonts.poppins(
+                                              textStyle: const TextStyle(
+                                                  color: Color(0xFF806A00),
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 14),
+                                            ),
+                                          ),
+                                        ]),
+                                    const Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Color(0xFF806A00),
+                                    )
+                                  ],
                                 ),
                               ),
-                              Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Menjadi Anggota di Fitness Gym",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                            color: Color(0xFF806A00),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14),
-                                      ),
-                                    ),
-                                    Text(
-                                      "& buka pengalaman penuh",
-                                      style: GoogleFonts.poppins(
-                                        textStyle: const TextStyle(
-                                            color: Color(0xFF806A00),
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14),
-                                      ),
-                                    ),
-                                  ]),
-                              const Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                color: Color(0xFF806A00),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                            )
+                          : const SizedBox(),
                     ],
                   ),
                 ),

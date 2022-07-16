@@ -1,9 +1,10 @@
+import 'package:fitness_gym/models/preferences/user_preferences.dart';
 import 'package:fitness_gym/screens/aktivitas/aktivitas_screen.dart';
 import 'package:fitness_gym/screens/akun/akun_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/home/home_screen.dart';
 import 'package:fitness_gym/screens/kelas/kelas_screen.dart';
-import 'package:fitness_gym/screens/splash/splash_view_model.dart';
+
 import 'package:fitness_gym/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,8 +23,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Provider.of<DashboardViewModel>(context, listen: false)
-        .getDataUser(context);
+    Provider.of<DashboardViewModel>(context,listen: false).getData();
   }
 
   @override

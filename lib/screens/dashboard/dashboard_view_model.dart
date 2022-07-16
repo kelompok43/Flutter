@@ -27,31 +27,35 @@ class DashboardViewModel extends ChangeNotifier {
         (route) => false);
   }
 
-  Future getDataUser(BuildContext context) async {
-    try {
-      Map<String, dynamic> getDataUser = await UserApi().getDataById();
-      var response = LoginResponse.fromJson(getDataUser);
-      UserPreferences().setUser(UserEntity(
-        id: response.data?.id ?? 0,
-        name: response.data?.name ?? "",
-        dob: response.data?.dob ?? "",
-        email: response.data?.email ?? "",
-        phone: response.data?.phone ?? "",
-        address: response.data?.address ?? "",
-        gender: response.data?.gender ?? "",
-        status: response.data?.status ?? "",
-        picture: response.data?.picture ?? "",
-      ));
-    } on DioError catch (e) {
-      if (e.response!.statusCode != 200) {
-        UserPreferences().logout();
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const WelcomeScreen(),
-            ),
-            (route) => false);
-      }
-    }
+  var user = UserPreferences().getUser();
+  void getData() {
+    user = UserPreferences().getUser();
   }
+  // Future getDataUser(BuildContext context) async {
+  //   try {
+  //     Map<String, dynamic> getDataUser = await UserApi().getDataById();
+  //     var response = LoginResponse.fromJson(getDataUser);
+  //     UserPreferences().setUser(UserEntity(
+  //       id: response.data?.id ?? 0,
+  //       name: response.data?.name ?? "",
+  //       dob: response.data?.dob ?? "",
+  //       email: response.data?.email ?? "",
+  //       phone: response.data?.phone ?? "",
+  //       address: response.data?.address ?? "",
+  //       gender: response.data?.gender ?? "",
+  //       status: response.data?.status ?? "",
+  //       picture: response.data?.picture ?? "",
+  //     ));
+  //   } on DioError catch (e) {
+  //     if (e.response!.statusCode != 200) {
+  //       UserPreferences().logout();
+  //       Navigator.pushAndRemoveUntil(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => const WelcomeScreen(),
+  //           ),
+  //           (route) => false);
+  //     }
+  //   }
+  // }
 }

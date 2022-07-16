@@ -10,7 +10,7 @@ class UserApi {
   Future postLogin(String email, String password) async {
     final _response = await dio.post(baseUrl + "user/login",
         data: {'email': email, 'password': password});
-    if (_response.statusCode == 200) {
+    if (_response.statusCode! >= 200 || _response.statusCode! <= 300) {
       return _response.data;
     } else {
       throw Exception("Gagal Login");
@@ -20,7 +20,7 @@ class UserApi {
   Future postRegister(String name, String email, String password) async {
     final _response = await dio.post(baseUrl + "user/register",
         data: {'name': name, 'email': email, 'password': password});
-    if (_response.statusCode == 200) {
+    if (_response.statusCode! >= 200 || _response.statusCode! <= 300) {
       return _response.data;
     } else {
       throw Exception("Register Gagal");
@@ -53,8 +53,7 @@ class UserApi {
       'email': email,
       'phone': phone
     });
-
-    var response = await Dio().post(
+    var response = await dio.post(
       baseUrl + "user/detail/$userId",
       data: body,
       options: Options(
@@ -63,8 +62,11 @@ class UserApi {
         },
       ),
     );
-
-    return response;
+    if (response.statusCode! >= 200 || response.statusCode! <= 300) {
+      return response.data;
+    } else {
+      return Exception("Gagal Tambah Detail User");
+    }
   }
 
   Future changePassword(String password) async {

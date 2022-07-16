@@ -19,7 +19,7 @@ class _CameraScreenState extends State<CameraScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller = CameraController(widget.cameras, ResolutionPreset.high);
+    _controller = CameraController(widget.cameras, ResolutionPreset.max);
     _initializeControllerFuture = _controller.initialize();
   }
 
@@ -41,7 +41,9 @@ class _CameraScreenState extends State<CameraScreen> {
             return Stack(
               children: [
                 SizedBox(
-                  height: double.infinity,
+                  width: MediaQuery.of(context).size.width,
+                  height: double.infinity/
+                      _controller.value.aspectRatio,
                   child: CameraPreview(_controller),
                 ),
                 Positioned(

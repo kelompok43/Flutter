@@ -1,5 +1,5 @@
 import 'package:fitness_gym/screens/akun/akun_view_model.dart';
-import 'package:fitness_gym/screens/akun/membership_screen.dart';
+import 'package:fitness_gym/screens/membership/membership_screen.dart';
 import 'package:fitness_gym/screens/change_password/change_password_screen.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
 import 'package:fitness_gym/screens/terms_n_conditions/terms_n_conditions.dart';
@@ -11,8 +11,20 @@ import 'package:provider/provider.dart';
 
 import 'edit_akun_screen.dart';
 
-class AkunScreen extends StatelessWidget {
+class AkunScreen extends StatefulWidget {
   const AkunScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AkunScreen> createState() => _AkunScreenState();
+}
+
+class _AkunScreenState extends State<AkunScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<AkunViewModel>(context, listen: false).getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +62,7 @@ class AkunScreen extends StatelessWidget {
                           ),
                         )
                       : Center(
-                        child: Text(
+                          child: Text(
                             userViewModel.user.name![0],
                             style: GoogleFonts.poppins(
                               fontSize: 16,
@@ -58,7 +70,7 @@ class AkunScreen extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                      ),
+                        ),
                 ),
                 title: Text(
                   userViewModel.user.name!,

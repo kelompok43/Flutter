@@ -20,6 +20,13 @@ class AkunViewModel extends ChangeNotifier {
   TextEditingController? alamatCtrl;
   TextEditingController? emailCtrl;
   TextEditingController? phoneCtrl;
+  bool _isHidden = true;
+  
+  bool get isHidden => _isHidden;
+  set isHidden(bool newValue) {
+    _isHidden = newValue;
+    notifyListeners();
+  }
 
   void datePicker(
       BuildContext context, TextEditingController tglLahirCtrl) async {

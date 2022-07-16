@@ -78,7 +78,7 @@ class ChangePasswordScreen extends StatelessWidget {
                           value.newPassHidden = !value.newPassHidden;
                         },
                         message: "Password Baru",
-                        action: TextInputAction.next,
+                        action: TextInputAction.done,
                       ),
                       sizedBoxHeight(30),
                       Text(

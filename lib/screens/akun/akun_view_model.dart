@@ -125,6 +125,28 @@ class AkunViewModel extends ChangeNotifier {
             phoneCtrl!.text,
             token ?? "",
             userId);
+
+        var response = LoginResponse.fromJson(editProfile);
+
+        UserPreferences().setUser(UserEntity(
+            id: response.data?.id ?? 0,
+            name: response.data?.name ?? "",
+            dob: response.data?.dob ?? "",
+            email: response.data?.email ?? "",
+            phone: response.data?.phone ?? "",
+            address: response.data?.address ?? "",
+            gender: response.data?.gender ?? "",
+            status: response.data?.status ?? "",
+            picture: response.data?.picture ?? ""));
+
+        SnackBar snackBar = SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: primary5,
+          duration: const Duration(seconds: 2),
+          content: const Text('Edit Profile Berhasil'),
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } on DioError catch (e) {
         if (e.response != null) {
           var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
@@ -145,7 +167,6 @@ class AkunViewModel extends ChangeNotifier {
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
-        addDetailState = AddDetailUserState.initial;
         notifyListeners();
       }
       Navigator.pushAndRemoveUntil(
@@ -154,30 +175,11 @@ class AkunViewModel extends ChangeNotifier {
             builder: (context) => const DashboardScreen(),
           ),
           (route) => false);
-      addDetailState = AddDetailUserState.initial;
       notifyListeners();
     } on DioError catch (e) {
       if (e.response?.data != null) {
         var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
-        var response = LoginResponse.fromJson(editProfile);
 
-        UserPreferences().setUser(UserEntity(
-            id: response.data?.id ?? 0,
-            name: response.data?.name ?? "",
-            dob: response.data?.dob ?? "",
-            email: response.data?.email ?? "",
-            phone: response.data?.phone ?? "",
-            address: response.data?.address ?? "",
-            gender: response.data?.gender ?? "",
-            status: response.data?.status ?? "",
-            picture: response.data?.picture ?? ""));
-            
-        SnackBar snackBar = SnackBar(
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: primary5,
-          duration: const Duration(seconds: 2),
-          content: const Text('Edit Profile Berhasil'),
-        );
         var user = UserPreferences().getUser();
         print(user.dob);
         print(user.address);
@@ -185,17 +187,13 @@ class AkunViewModel extends ChangeNotifier {
         print(user.phone);
         print(user.picture);
         _imagePath!.delete();
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
               builder: (context) => const DashboardScreen(),
             ),
             (route) => false);
-      } on DioError catch (e) {
-        if (e.response?.statusCode != 200) {
-          print(e);
-        }
       }
     } on DioError catch (e) {
       if (e.response!.statusCode != 200) {

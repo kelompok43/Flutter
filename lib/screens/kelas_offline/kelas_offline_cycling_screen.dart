@@ -283,7 +283,9 @@ class _KelasOfflineCyclingState extends State<KelasOfflineCycling>
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  const PesanKelasScreen(assetImage: assetImage,),
+                                                  const PesanKelasScreen(
+                                                assetImage: assetImage,
+                                              ),
                                             ));
                                       },
                                       child: Text(

@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:fitness_gym/models/preferences/base_preferences.dart';
+import 'package:fitness_gym/screens/aktivitas/aktivitas_view_model.dart';
 import 'package:fitness_gym/screens/akun/akun_view_model.dart';
 import 'package:fitness_gym/screens/change_password/change_password_view_model.dart';
 import 'package:fitness_gym/screens/dashboard/dashboard_view_model.dart';
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => MembershipViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AktivitasViewModel(),
         ),
       ],
       child: MaterialApp(

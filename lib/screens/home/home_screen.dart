@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    Provider.of<HomeViewModel>(context, listen: false).getDataUser(context);
     Provider.of<HomeViewModel>(context, listen: false).getData();
   }
 

@@ -23,6 +23,7 @@ class _AkunScreenState extends State<AkunScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    Provider.of<AkunViewModel>(context, listen: false).getDataUser(context);
     Provider.of<AkunViewModel>(context, listen: false).getData();
   }
 

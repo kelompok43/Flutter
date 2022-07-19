@@ -22,7 +22,7 @@ class AkunViewModel extends ChangeNotifier {
   TextEditingController? emailCtrl;
   TextEditingController? phoneCtrl;
   bool _isHidden = true;
-  
+
   bool get isHidden => _isHidden;
   set isHidden(bool newValue) {
     _isHidden = newValue;
@@ -186,8 +186,17 @@ class AkunViewModel extends ChangeNotifier {
       notifyListeners();
     } on DioError catch (e) {
       if (e.response?.data != null) {
-        print(e);
+        var errorResponse = ApiErrorResponse.fromJson(e.response!.data);
+        SnackBar snackBar = SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: primary5,
+          duration: const Duration(seconds: 2),
+          content: Text(errorResponse.message ?? ""),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.pop(context);
       }
+
     }
   }
   Future getDataUser(BuildContext context) async {

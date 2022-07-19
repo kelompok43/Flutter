@@ -71,7 +71,7 @@ class UserApi {
 
   Future changePassword(String password) async {
     final id = UserPreferences().getUser().id;
-    final response = await dio.put(baseUrl + "user/$id/change-password",
+    final response = await dio.patch(baseUrl + "user/$id/change-password",
         data: {'password': password});
     if (response.statusCode == 200) {
       return response.data;

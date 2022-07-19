@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../models/api/user_service.dart';
 import '../../models/entities/user_entity.dart';
 import '../../models/responses/login_response.dart';
+import '../../utils/constants.dart';
 import '../dashboard/dashboard_screen.dart';
 import '../welcome/welcome_screen.dart';
 
@@ -40,6 +41,13 @@ class SplashViewModel extends ChangeNotifier {
             ),
             (route) => false);
       }
+      SnackBar snackBar = SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: primary5,
+        duration: const Duration(seconds: 2),
+        content: Text(e.response!.data['message']),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }

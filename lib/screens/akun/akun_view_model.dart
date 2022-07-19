@@ -11,6 +11,7 @@ import 'package:intl/intl.dart';
 import '../../models/responses/api_error_response.dart';
 import '../../models/responses/login_response.dart';
 import '../../utils/constants.dart';
+import '../welcome/welcome_screen.dart';
 
 class AkunViewModel extends ChangeNotifier {
   File? _imagePath;
@@ -187,6 +188,28 @@ class AkunViewModel extends ChangeNotifier {
       if (e.response?.data != null) {
         print(e);
       }
+    }
+  }
+  Future getDataUser(BuildContext context) async {
+    try {
+      await UserApi().getDataById();
+    } on DioError catch (e) {
+      if (e.response!.statusCode != 200) {
+        UserPreferences().logout();
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const WelcomeScreen(),
+            ),
+            (route) => false);
+      }
+      SnackBar snackBar = SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: primary5,
+        duration: const Duration(seconds: 2),
+        content: Text(e.response!.data['message']),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 }
